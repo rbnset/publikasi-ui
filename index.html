@@ -72,125 +72,120 @@
 
 
 		<!-- 3: FEATURED: tetap ditaruh setelah category, tapi dibuat keluar dari padding container -->
-		<section
-  id="Featured"
-  class="mt-6 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen max-w-none"
->
-  <!-- Flickity HTML init: paksa align kiri -->
-  <div
-    class="main-carousel w-full"
-    data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "pageDots": false }'
-  >
-    <!-- SLIDE 1 -->
-    <div class="featured-news-card relative w-full h-[320px] sm:h-[360px] md:h-[480px] lg:h-[550px] flex shrink-0 overflow-hidden">
-      <img
-        src="assets/images/thumbnails/th-featured-1.png"
-        class="thumbnail absolute inset-0 w-full h-full object-cover"
-        alt="thumbnail"
-      />
-      <div class="absolute inset-0 z-10 bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)]"></div>
+		<section id="Featured" class="mt-6 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen max-w-none">
+			<!-- Flickity HTML init: paksa align kiri -->
+			<div class="main-carousel w-full"
+				data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false, "pageDots": false }'>
+				<!-- SLIDE 1 -->
+				<div
+					class="featured-news-card relative w-full h-[320px] sm:h-[360px] md:h-[480px] lg:h-[550px] flex shrink-0 overflow-hidden">
+					<img src="assets/images/thumbnails/th-featured-1.png"
+						class="thumbnail absolute inset-0 w-full h-full object-cover" alt="thumbnail" />
+					<div class="absolute inset-0 z-10 bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)]"></div>
 
-      <!-- Konten: sejajarkan dengan container layout halaman -->
-      <div class="relative z-20 w-full h-full flex items-end pb-6 md:pb-10">
-        <div class="w-full max-w-[1130px] mx-auto px-4 sm:px-6 lg:px-8 flex items-end justify-between">
-          <div class="flex flex-col gap-2 sm:gap-[10px] max-w-[85%] md:max-w-[70%]">
-            <p class="text-white text-xs sm:text-sm">Featured</p>
+					<!-- Konten: sejajarkan dengan container layout halaman -->
+					<div class="relative z-20 w-full h-full flex items-end pb-6 md:pb-10">
+						<div class="w-full max-w-[1130px] mx-auto px-4 sm:px-6 lg:px-8 flex items-end justify-between">
+							<div class="flex flex-col gap-2 sm:gap-[10px] max-w-[85%] md:max-w-[70%]">
+								<p class="text-white text-xs sm:text-sm">Featured</p>
 
-            <a
-              href="details.html"
-              class="font-bold text-lg leading-[26px] sm:text-2xl sm:leading-[32px] md:text-3xl md:leading-[40px] lg:text-4xl lg:leading-[45px] text-white two-lines hover:underline transition-all duration-300"
-            >
-              Research and innovation for GEN Z
-            </a>
+								<a href="details.html"
+									class="font-bold text-lg leading-[26px] sm:text-2xl sm:leading-[32px] md:text-3xl md:leading-[40px] lg:text-4xl lg:leading-[45px] text-white two-lines hover:underline transition-all duration-300">
+									Research and innovation for GEN Z
+								</a>
 
-            <p class="text-white text-xs sm:text-sm">
-              The ASU Knowledge Enterprise advances research, innovation, strategic partnerships,
-              entrepreneurship and economic development.
-            </p>
-          </div>
+								<p class="text-white text-xs sm:text-sm">
+									The ASU Knowledge Enterprise advances research, innovation, strategic partnerships,
+									entrepreneurship and economic development.
+								</p>
+							</div>
 
-          <!-- tombol custom kamu -->
-          <div class="prevNextButtons hidden md:flex items-center gap-4 mb-[60px] shrink-0">
-            <button
-              class="button--previous appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300"
-              type="button"
-              aria-label="Previous"
-            >
-              <img src="assets/images/icons/arrow.svg" alt="arrow" />
-            </button>
-            <button
-              class="button--next appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 rotate-180"
-              type="button"
-              aria-label="Next"
-            >
-              <img src="assets/images/icons/arrow.svg" alt="arrow" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+							<!-- tombol custom kamu -->
+							<div class="prevNextButtons hidden md:flex items-center gap-4 mb-[60px] shrink-0">
+								<button
+									class="button--previous appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300"
+									type="button" aria-label="Previous">
+									<img src="assets/images/icons/arrow.svg" alt="arrow" />
+								</button>
+								<button
+									class="button--next appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 rotate-180"
+									type="button" aria-label="Next">
+									<img src="assets/images/icons/arrow.svg" alt="arrow" />
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    <!-- SLIDE 2 -->
-    <div class="featured-news-card relative w-full h-[320px] sm:h-[360px] md:h-[480px] lg:h-[550px] flex shrink-0 overflow-hidden">
-      <img src="assets/images/thumbnails/th-featured-1.png" class="thumbnail absolute inset-0 w-full h-full object-cover" alt="thumbnail" />
-      <div class="absolute inset-0 z-10 bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)]"></div>
+				<!-- SLIDE 2 -->
+				<div
+					class="featured-news-card relative w-full h-[320px] sm:h-[360px] md:h-[480px] lg:h-[550px] flex shrink-0 overflow-hidden">
+					<img src="assets/images/thumbnails/th-featured-1.png"
+						class="thumbnail absolute inset-0 w-full h-full object-cover" alt="thumbnail" />
+					<div class="absolute inset-0 z-10 bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)]"></div>
 
-      <div class="relative z-20 w-full h-full flex items-end pb-6 md:pb-10">
-        <div class="w-full max-w-[1130px] mx-auto px-4 sm:px-6 lg:px-8 flex items-end justify-between">
-          <div class="flex flex-col gap-2 sm:gap-[10px] max-w-[85%] md:max-w-[70%]">
-            <p class="text-white text-xs sm:text-sm">Featured</p>
-            <a
-              href="details.html"
-              class="font-bold text-lg leading-[26px] sm:text-2xl sm:leading-[32px] md:text-3xl md:leading-[40px] lg:text-4xl lg:leading-[45px] text-white two-lines hover:underline transition-all duration-300"
-            >
-              Generation Z Prefer Remote Working Than Big Salary
-            </a>
-            <p class="text-white text-xs sm:text-sm">12 Jun, 2024 • Business</p>
-          </div>
+					<div class="relative z-20 w-full h-full flex items-end pb-6 md:pb-10">
+						<div class="w-full max-w-[1130px] mx-auto px-4 sm:px-6 lg:px-8 flex items-end justify-between">
+							<div class="flex flex-col gap-2 sm:gap-[10px] max-w-[85%] md:max-w-[70%]">
+								<p class="text-white text-xs sm:text-sm">Featured</p>
+								<a href="details.html"
+									class="font-bold text-lg leading-[26px] sm:text-2xl sm:leading-[32px] md:text-3xl md:leading-[40px] lg:text-4xl lg:leading-[45px] text-white two-lines hover:underline transition-all duration-300">
+									Generation Z Prefer Remote Working Than Big Salary
+								</a>
+								<p class="text-white text-xs sm:text-sm">12 Jun, 2024 • Business</p>
+							</div>
 
-          <div class="prevNextButtons hidden md:flex items-center gap-4 mb-[60px] shrink-0">
-            <button class="button--previous appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300" type="button" aria-label="Previous">
-              <img src="assets/images/icons/arrow.svg" alt="arrow" />
-            </button>
-            <button class="button--next appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 rotate-180" type="button" aria-label="Next">
-              <img src="assets/images/icons/arrow.svg" alt="arrow" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+							<div class="prevNextButtons hidden md:flex items-center gap-4 mb-[60px] shrink-0">
+								<button
+									class="button--previous appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300"
+									type="button" aria-label="Previous">
+									<img src="assets/images/icons/arrow.svg" alt="arrow" />
+								</button>
+								<button
+									class="button--next appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 rotate-180"
+									type="button" aria-label="Next">
+									<img src="assets/images/icons/arrow.svg" alt="arrow" />
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    <!-- SLIDE 3 -->
-    <div class="featured-news-card relative w-full h-[320px] sm:h-[360px] md:h-[480px] lg:h-[550px] flex shrink-0 overflow-hidden">
-      <img src="assets/images/thumbnails/th-featured-1.png" class="thumbnail absolute inset-0 w-full h-full object-cover" alt="thumbnail" />
-      <div class="absolute inset-0 z-10 bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)]"></div>
+				<!-- SLIDE 3 -->
+				<div
+					class="featured-news-card relative w-full h-[320px] sm:h-[360px] md:h-[480px] lg:h-[550px] flex shrink-0 overflow-hidden">
+					<img src="assets/images/thumbnails/th-featured-1.png"
+						class="thumbnail absolute inset-0 w-full h-full object-cover" alt="thumbnail" />
+					<div class="absolute inset-0 z-10 bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)]"></div>
 
-      <div class="relative z-20 w-full h-full flex items-end pb-6 md:pb-10">
-        <div class="w-full max-w-[1130px] mx-auto px-4 sm:px-6 lg:px-8 flex items-end justify-between">
-          <div class="flex flex-col gap-2 sm:gap-[10px] max-w-[85%] md:max-w-[70%]">
-            <p class="text-white text-xs sm:text-sm">Featured</p>
-            <a
-              href="details.html"
-              class="font-bold text-lg leading-[26px] sm:text-2xl sm:leading-[32px] md:text-3xl md:leading-[40px] lg:text-4xl lg:leading-[45px] text-white two-lines hover:underline transition-all duration-300"
-            >
-              Generation Z Prefer Remote Working Than Big Salary
-            </a>
-            <p class="text-white text-xs sm:text-sm">12 Jun, 2024 • Business</p>
-          </div>
+					<div class="relative z-20 w-full h-full flex items-end pb-6 md:pb-10">
+						<div class="w-full max-w-[1130px] mx-auto px-4 sm:px-6 lg:px-8 flex items-end justify-between">
+							<div class="flex flex-col gap-2 sm:gap-[10px] max-w-[85%] md:max-w-[70%]">
+								<p class="text-white text-xs sm:text-sm">Featured</p>
+								<a href="details.html"
+									class="font-bold text-lg leading-[26px] sm:text-2xl sm:leading-[32px] md:text-3xl md:leading-[40px] lg:text-4xl lg:leading-[45px] text-white two-lines hover:underline transition-all duration-300">
+									Generation Z Prefer Remote Working Than Big Salary
+								</a>
+								<p class="text-white text-xs sm:text-sm">12 Jun, 2024 • Business</p>
+							</div>
 
-          <div class="prevNextButtons hidden md:flex items-center gap-4 mb-[60px] shrink-0">
-            <button class="button--previous appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300" type="button" aria-label="Previous">
-              <img src="assets/images/icons/arrow.svg" alt="arrow" />
-            </button>
-            <button class="button--next appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 rotate-180" type="button" aria-label="Next">
-              <img src="assets/images/icons/arrow.svg" alt="arrow" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+							<div class="prevNextButtons hidden md:flex items-center gap-4 mb-[60px] shrink-0">
+								<button
+									class="button--previous appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300"
+									type="button" aria-label="Previous">
+									<img src="assets/images/icons/arrow.svg" alt="arrow" />
+								</button>
+								<button
+									class="button--next appearance-none w-[38px] h-[38px] flex items-center justify-center rounded-full shrink-0 ring-1 ring-white hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 rotate-180"
+									type="button" aria-label="Next">
+									<img src="assets/images/icons/arrow.svg" alt="arrow" />
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 
 
@@ -411,9 +406,9 @@
 				<div
 					class="w-full lg:w-[455px] lg:h-[424px] lg:px-5 overflow-y-auto overflow-x-hidden relative custom-scrollbar">
 					<div class="w-full flex flex-col gap-4 lg:gap-5">
-						<a href="details.html" class="card py-[2px]">
-							<div
-								class="rounded-[20px] border border-[#EEF0F7] p-3 sm:p-[14px] flex items-center gap-3 sm:gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
+						<a href="details.html" class="card py-[2px] block">
+							<div class="rounded-[20px] border border-[#EEF0F7] p-3 sm:p-[14px] flex items-center gap-3 sm:gap-4 bg-white transition-all duration-300
+               hover:ring-2 hover:ring-inset hover:ring-[#FF6B18]">
 								<div
 									class="w-[92px] h-[72px] sm:w-[110px] sm:h-[90px] lg:w-[130px] lg:h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
 									<img src="assets/images/thumbnails/th-sunbathe.png"
@@ -430,9 +425,9 @@
 							</div>
 						</a>
 
-						<a href="details.html" class="card py-[2px]">
-							<div
-								class="rounded-[20px] border border-[#EEF0F7] p-3 sm:p-[14px] flex items-center gap-3 sm:gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
+						<a href="details.html" class="card py-[2px] block">
+							<div class="rounded-[20px] border border-[#EEF0F7] p-3 sm:p-[14px] flex items-center gap-3 sm:gap-4 bg-white transition-all duration-300
+               hover:ring-2 hover:ring-inset hover:ring-[#FF6B18]">
 								<div
 									class="w-[92px] h-[72px] sm:w-[110px] sm:h-[90px] lg:w-[130px] lg:h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
 									<img src="assets/images/thumbnails/camp.png" class="object-cover w-full h-full"
@@ -449,9 +444,9 @@
 							</div>
 						</a>
 
-						<a href="details.html" class="card py-[2px]">
-							<div
-								class="rounded-[20px] border border-[#EEF0F7] p-3 sm:p-[14px] flex items-center gap-3 sm:gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
+						<a href="details.html" class="card py-[2px] block">
+							<div class="rounded-[20px] border border-[#EEF0F7] p-3 sm:p-[14px] flex items-center gap-3 sm:gap-4 bg-white transition-all duration-300
+               hover:ring-2 hover:ring-inset hover:ring-[#FF6B18]">
 								<div
 									class="w-[92px] h-[72px] sm:w-[110px] sm:h-[90px] lg:w-[130px] lg:h-[100px] flex shrink-0 rounded-[20px] overflow-hidden">
 									<img src="assets/images/thumbnails/th-cyclist.png"
@@ -469,15 +464,14 @@
 						</a>
 					</div>
 
-					<!-- Gradient bawah: hanya desktop (saat kolom kanan tinggi & scroll) -->
 					<div
 						class="hidden lg:block sticky z-10 bottom-0 w-full h-[100px] bg-gradient-to-b from-[rgba(255,255,255,0.19)] to-[rgba(255,255,255,1)]">
 					</div>
 				</div>
+
 			</div>
 		</section>
-
-
+		
 	</div>
 
 	<script src="js/two-lines-text.js"></script>
