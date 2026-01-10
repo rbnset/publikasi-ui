@@ -9,19 +9,40 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <title>Contact</title>
+    <title>Kontak</title>
+
+    <style>
+      /* Active state pakai aria-current="page" (untuk menandai halaman saat ini) */
+      #MenuBar a[aria-current="page"] {
+        background: #fff7f2;
+        color: #ff6b18;
+      }
+      #mobileMenu a[aria-current="page"] {
+        border-color: #ff6b18;
+        background: #fff7f2;
+        color: #ff6b18;
+        font-weight: 700;
+      }
+    </style>
   </head>
 
   <body class="m-0 bg-[#F8F9FC] font-[Poppins] text-[#0B0B0B]">
     <!-- CONTAINER -->
     <div class="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1130px]">
-      <!-- HEADER / NAVBAR -->
+      <!-- HEADER / NAVBAR (Halaman: Kontak) -->
       <header class="mt-6">
         <div class="gap-4 flex items-center justify-between">
           <!-- Logo -->
           <div class="gap-4 flex shrink-0 items-center">
-            <a href="index.html" class="flex shrink-0 items-center">
-              <img src="../../public/assets/images/logos/logo.svg" alt="Maga" />
+            <a
+              href="index.html"
+              class="flex shrink-0 items-center"
+              aria-label="Beranda BHAYASCIENTIA"
+            >
+              <img
+                src="../../public/assets/images/logos/logo.svg"
+                alt="BHAYASCIENTIA"
+              />
             </a>
           </div>
 
@@ -31,7 +52,7 @@
             <nav
               id="MenuBar"
               class="xl:flex hidden items-center"
-              aria-label="Main menu"
+              aria-label="Menu utama"
             >
               <div
                 class="gap-1 bg-white p-1 inline-flex flex-wrap items-center rounded-full ring-1 ring-[#EEF0F7]"
@@ -40,41 +61,46 @@
                   href="index.html"
                   data-nav="home"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Home</a
+                  >Beranda</a
                 >
+
                 <a
                   href="publicationPage.html"
                   data-nav="publication"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Publication</a
+                  >Publikasi</a
                 >
+
                 <a
                   href="eventPage.html"
                   data-nav="event"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                   >Event</a
                 >
+
                 <a
                   href="aboutPage.html"
                   data-nav="about"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >About</a
+                  >Tentang</a
                 >
+
+                <!-- KONTAK AKTIF -->
                 <a
                   href="contatUsPage.html"
                   data-nav="contact"
-                  class="px-4 py-2 text-sm font-bold rounded-full bg-[#F4F6FB] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                   aria-current="page"
-                  >Contact</a
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  >Kontak</a
                 >
               </div>
             </nav>
 
-            <!-- Desktop Login button (optional) -->
+            <!-- Desktop Login button (opsional) -->
             <a
               href="loginPage.html"
               class="bg-white text-sm font-bold xl:flex hidden h-[44px] items-center justify-center rounded-full border border-[#EEF0F7] px-[18px] transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-              >Login</a
+              >Masuk</a
             >
 
             <!-- Mobile hamburger -->
@@ -83,7 +109,7 @@
               class="h-10 w-10 bg-white xl:hidden flex items-center justify-center rounded-full border border-[#EEF0F7]"
               aria-controls="mobileMenu"
               aria-expanded="false"
-              aria-label="Toggle menu"
+              aria-label="Buka menu"
               type="button"
             >
               <svg
@@ -122,37 +148,51 @@
           <div
             class="space-y-4 rounded-2xl bg-white p-3 border border-[#EEF0F7]"
           >
-            <div class="gap-2 grid grid-cols-1" aria-label="Main menu mobile">
+            <div
+              class="gap-2 grid grid-cols-1"
+              aria-label="Menu utama versi mobile"
+            >
               <a
                 href="index.html"
+                data-nav="home"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                >Home</a
+                >Beranda</a
               >
+
               <a
                 href="publicationPage.html"
+                data-nav="publication"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                >Publication</a
+                >Publikasi</a
               >
+
               <a
                 href="eventPage.html"
+                data-nav="event"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                 >Event</a
               >
+
               <a
                 href="aboutPage.html"
+                data-nav="about"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                >About</a
+                >Tentang</a
               >
+
+              <!-- KONTAK AKTIF -->
               <a
                 href="contatUsPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-bold border border-[#FF6B18] bg-[#FFF7F2] text-[#FF6B18]"
+                data-nav="contact"
                 aria-current="page"
-                >Contact</a
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                >Kontak</a
               >
+
               <a
                 href="loginPage.html"
                 class="rounded-xl px-4 py-3 text-sm font-bold text-white bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
-                >Login</a
+                >Masuk</a
               >
             </div>
           </div>
@@ -166,7 +206,7 @@
           <p
             class="px-4 py-2 text-xs font-bold inline-flex items-center rounded-full bg-[#FFECE1] text-[#FF6B18]"
           >
-            Contact
+            Kontak
           </p>
           <h1
             class="mt-4 text-3xl font-bold sm:text-4xl sm:leading-[45px] leading-[40px]"
@@ -225,9 +265,9 @@
                     class="px-3 py-2 font-bold rounded-full bg-[#F4F6FB] text-[11px] text-[#6B7280]"
                     >Alamat</span
                   >
-                  <span class="text-[#111827]">
-                    Depok, Yogyakarta, Indonesia (contoh)
-                  </span>
+                  <span class="text-[#111827]"
+                    >Depok, Yogyakarta, Indonesia (contoh)</span
+                  >
                 </div>
               </div>
             </div>
@@ -239,24 +279,28 @@
               <div class="mt-4 gap-2 flex flex-wrap">
                 <button
                   type="button"
+                  data-topic="Kerja sama"
                   class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
                 >
                   Kerja sama
                 </button>
                 <button
                   type="button"
+                  data-topic="Laporan bug"
                   class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
                 >
                   Laporan bug
                 </button>
                 <button
                   type="button"
+                  data-topic="Konten"
                   class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
                 >
                   Konten
                 </button>
                 <button
                   type="button"
+                  data-topic="Saran fitur"
                   class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
                 >
                   Saran fitur
@@ -266,7 +310,7 @@
                 class="mt-3 sm:text-sm sm:leading-[21px] text-[11px] leading-[16px] text-[#A3A6AE]"
               >
                 (Opsional) tombol ini bisa kamu hubungkan untuk auto-isi
-                “Subject”.
+                “Subjek”.
               </p>
             </div>
           </div>
@@ -407,10 +451,10 @@
       </main>
     </div>
 
-    <!-- JS: mobile menu + demo submit -->
+    <!-- JS: 1 file/1 blok (biar tidak bertumpuk) -->
     <script>
-      // Mobile menu (samakan seperti halaman lain)
       (function () {
+        // ===== Mobile menu toggle =====
         const btn = document.getElementById("hamburgerBtn");
         const panel = document.getElementById("mobileMenu");
         const overlay = document.getElementById("mobileOverlay");
@@ -437,117 +481,32 @@
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") setMobileOpen(false);
         });
-      })();
 
-      // Demo submit (ganti jadi API call)
-      (function () {
+        // Tutup menu setelah klik link di mobile (UX lebih enak)
+        panel?.addEventListener("click", (e) => {
+          const link = e.target.closest("a");
+          if (!link) return;
+          setMobileOpen(false);
+        });
+
+        // ===== Demo submit =====
         const form = document.getElementById("contactForm");
         const success = document.getElementById("contactSuccess");
-        if (!form || !success) return;
 
-        form.addEventListener("submit", (e) => {
+        form?.addEventListener("submit", (e) => {
           e.preventDefault();
-          success.classList.remove("hidden");
+          success?.classList.remove("hidden");
           form.reset();
         });
-      })();
-    </script>
 
-    <!-- Optional: active nav highlight (kalau kamu pakai di halaman lain) -->
-    <script>
-      (function () {
-        const current = location.pathname.split("/").pop()?.toLowerCase() || "";
-        const map = {
-          "index.html": "home",
-          "homepage.html": "home",
-          "publicationpage.html": "publication",
-          "eventpage.html": "event",
-          "aboutpage.html": "about",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-          "contatuspage.html": "contact",
-        };
-
-        // NOTE: nama file kamu "contatUsPage.html" (typo) jadi pastikan ini sesuai:
-        if (current === "contatuspage.html" || current === "contatuspage.html")
-          return;
+        // ===== Topik cepat => isi otomatis Subjek =====
+        const subject = document.getElementById("subject");
+        document.addEventListener("click", (e) => {
+          const topicBtn = e.target.closest("button[data-topic]");
+          if (!topicBtn || !subject) return;
+          subject.value = topicBtn.dataset.topic || "";
+          subject.focus();
+        });
       })();
     </script>
   </body>

@@ -46,34 +46,38 @@
                 <a
                   href="index.html"
                   data-nav="home"
-                  class="px-4 py-2 text-sm font-bold rounded-full bg-[#F4F6FB] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  aria-current="page"
-                  >Beranda</a
+                  class="nav-link px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                 >
+                  Beranda
+                </a>
                 <a
                   href="publicationPage.html"
                   data-nav="publication"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Publikasi</a
+                  class="nav-link px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                 >
+                  Publikasi
+                </a>
                 <a
                   href="eventPage.html"
                   data-nav="event"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Event</a
+                  class="nav-link px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                 >
+                  Event
+                </a>
                 <a
                   href="aboutPage.html"
                   data-nav="about"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Tentang</a
+                  class="nav-link px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                 >
+                  Tentang
+                </a>
                 <a
                   href="contatUsPage.html"
                   data-nav="contact"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Kontak</a
+                  class="nav-link px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                 >
+                  Kontak
+                </a>
               </div>
             </nav>
 
@@ -97,8 +101,9 @@
             <a
               href="publicationPage.html"
               class="text-sm font-bold text-white xl:flex hidden h-[44px] shrink-0 items-center justify-center rounded-full bg-[#FF6B18] px-[18px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F9FC]"
-              >Buka publikasi</a
             >
+              Buka publikasi
+            </a>
 
             <!-- Mobile hamburger -->
             <button
@@ -158,6 +163,7 @@
                   alt=""
                 />
               </button>
+
               <input
                 id="searchInputDesktop"
                 type="text"
@@ -166,6 +172,7 @@
                 class="font-semibold placeholder:font-normal w-full appearance-none outline-none placeholder:text-[#A3A6AE]"
                 placeholder="Cari publikasi, topik, atau penulis…"
               />
+
               <button
                 type="reset"
                 id="searchClearBtn"
@@ -218,48 +225,83 @@
               class="gap-2 grid grid-cols-1"
               aria-label="Menu utama versi mobile"
             >
+              <!-- Menu utama (samakan dengan desktop) -->
               <a
                 href="index.html"
-                class="rounded-xl px-4 py-3 text-sm font-bold border border-[#FF6B18] bg-[#FFF7F2] text-[#FF6B18]"
-                aria-current="page"
-                >Beranda</a
+                data-nav="home"
+                class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
               >
+                Beranda
+              </a>
+
               <a
                 href="publicationPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                >Publikasi</a
+                data-nav="publication"
+                class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
               >
+                Publikasi
+              </a>
+
               <a
                 href="eventPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                >Event</a
+                data-nav="event"
+                class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
               >
+                Event
+              </a>
+
               <a
                 href="aboutPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                >Tentang</a
+                data-nav="about"
+                class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
               >
-              <a
-                href="contatUsPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                >Kontak</a
-              >
+                Tentang
+              </a>
 
               <a
-                href="authorRegisterPage.html"
+                href="contatUsPage.html"
+                data-nav="contact"
+                class="mobile-nav-link rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+              >
+                Kontak
+              </a>
+
+              <!-- CTA / aksi tambahan (boleh ada di mobile, tapi jangan menggantikan menu utama) -->
+              <a
+                href="publicationPage.html"
                 class="rounded-xl px-4 py-3 text-sm font-bold text-white bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
-                >Daftar author</a
               >
-
-              <a
-                href="contatUsPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] bg-[#F4F6FB] text-center text-[#111827] transition-all duration-300 hover:border-[#FF6B18]"
-                >Ajukan kerja sama</a
-              >
+                Buka publikasi
+              </a>
             </div>
           </div>
         </div>
+
+        <!-- TOAST (optional, untuk demo coming soon) -->
+        <div
+          id="toast"
+          class="bottom-6 text-white px-4 py-2 text-sm shadow-lg fixed left-1/2 z-[60] hidden -translate-x-1/2 rounded-full bg-[#111827]"
+        >
+          Toast
+        </div>
       </header>
+
+      <!-- STYLE untuk warna aktif (brand orange) -->
+      <style>
+        /* Aktif desktop: pakai aria-current="page" */
+        #MenuBar a[aria-current="page"] {
+          background: #fff7f2;
+          color: #ff6b18;
+        }
+
+        /* Aktif mobile */
+        #mobileMenu a[aria-current="page"] {
+          border-color: #ff6b18;
+          background: #fff7f2;
+          color: #ff6b18;
+          font-weight: 700;
+        }
+      </style>
 
       <!-- MAIN -->
       <main class="mt-10 pb-16 sm:mt-14 sm:pb-20">
@@ -744,8 +786,26 @@
       </main>
     </div>
 
-    <!-- JS: mobile menu + desktop search + toast -->
+    <!-- JS: active nav + mobile menu + desktop search + toast -->
     <script>
+      // Active nav (desktop + mobile) via aria-current="page"
+      (function () {
+        const currentPath =
+          window.location.pathname.split("/").pop() || "index.html";
+
+        const navLinks = document.querySelectorAll("a[data-nav]");
+        navLinks.forEach((a) => {
+          const href = a.getAttribute("href") || "";
+          const linkPath = href.split("/").pop();
+
+          if (linkPath === currentPath) {
+            a.setAttribute("aria-current", "page");
+          } else {
+            a.removeAttribute("aria-current");
+          }
+        });
+      })();
+
       // Mobile menu toggle
       (function () {
         const btn = document.getElementById("hamburgerBtn");

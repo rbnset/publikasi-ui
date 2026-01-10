@@ -10,12 +10,26 @@
       rel="stylesheet"
     />
     <title>Tentang — BHAYASCIENTIA</title>
+
+    <style>
+      /* Active state pakai aria-current="page" (menandai halaman saat ini) */
+      #MenuBar a[aria-current="page"] {
+        background: #fff7f2;
+        color: #ff6b18;
+      }
+      #mobileMenu a[aria-current="page"] {
+        border-color: #ff6b18;
+        background: #fff7f2;
+        color: #ff6b18;
+        font-weight: 700;
+      }
+    </style>
   </head>
 
   <body class="m-0 bg-[#F8F9FC] font-[Poppins] text-[#0B0B0B]">
     <!-- CONTAINER -->
     <div class="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1130px]">
-      <!-- HEADER / NAVBAR -->
+      <!-- HEADER / NAVBAR (Halaman: Tentang) -->
       <header class="mt-6">
         <div class="gap-4 flex items-center justify-between">
           <!-- Logo -->
@@ -49,25 +63,30 @@
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                   >Beranda</a
                 >
+
                 <a
                   href="publicationPage.html"
                   data-nav="publication"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                   >Publikasi</a
                 >
+
                 <a
                   href="eventPage.html"
                   data-nav="event"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                   >Event</a
                 >
+
+                <!-- TENTANG AKTIF -->
                 <a
                   href="aboutPage.html"
                   data-nav="about"
-                  class="px-4 py-2 text-sm font-bold rounded-full bg-[#F4F6FB] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                   aria-current="page"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
                   >Tentang</a
                 >
+
                 <a
                   href="contatUsPage.html"
                   data-nav="contact"
@@ -77,11 +96,11 @@
               </div>
             </nav>
 
-            <!-- Desktop CTA (lebih relevan dari "Login" umum) -->
+            <!-- Desktop CTA -->
             <a
               href="authorLoginPage.html"
               class="bg-white text-sm font-bold xl:flex hidden h-[44px] items-center justify-center rounded-full border border-[#EEF0F7] px-[18px] transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-              >Masuk author</a
+              >Masuk</a
             >
 
             <!-- Mobile hamburger -->
@@ -135,27 +154,37 @@
             >
               <a
                 href="index.html"
+                data-nav="home"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                 >Beranda</a
               >
+
               <a
                 href="publicationPage.html"
+                data-nav="publication"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                 >Publikasi</a
               >
+
               <a
                 href="eventPage.html"
+                data-nav="event"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                 >Event</a
               >
+
+              <!-- TENTANG AKTIF -->
               <a
                 href="aboutPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-bold border border-[#FF6B18] bg-[#FFF7F2] text-[#FF6B18]"
+                data-nav="about"
                 aria-current="page"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                 >Tentang</a
               >
+
               <a
                 href="contatUsPage.html"
+                data-nav="contact"
                 class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                 >Kontak</a
               >
@@ -163,13 +192,13 @@
               <a
                 href="authorRegisterPage.html"
                 class="rounded-xl px-4 py-3 text-sm font-bold text-white bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
-                >Daftar author</a
+                >Daftar penulis</a
               >
 
               <a
                 href="authorLoginPage.html"
                 class="rounded-xl px-4 py-3 text-sm font-bold border border-[#EEF0F7] bg-[#F4F6FB] text-center text-[#111827] transition-all duration-300 hover:border-[#FF6B18]"
-                >Masuk author</a
+                >Masuk penulis</a
               >
             </div>
           </div>
@@ -211,7 +240,7 @@
             <a
               href="authorRegisterPage.html"
               class="bg-white px-5 py-3 text-sm font-bold inline-flex items-center justify-center rounded-full border border-[#EEF0F7] transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-              >Daftar author</a
+              >Daftar penulis</a
             >
 
             <a
@@ -222,7 +251,7 @@
           </div>
 
           <p class="mt-3 text-xs sm:text-sm text-[#6B7280]">
-            Untuk mengirim naskah, gunakan sistem author. Form Kontak dipakai
+            Untuk mengirim naskah, gunakan sistem penulis. Form Kontak dipakai
             untuk pertanyaan, laporan konten/bug, dan kerja sama.
           </p>
         </section>
@@ -784,9 +813,15 @@
         });
 
         overlay?.addEventListener("click", () => setMobileOpen(false));
-
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") setMobileOpen(false);
+        });
+
+        // Tutup menu setelah klik link di mobile
+        panel?.addEventListener("click", (e) => {
+          const link = e.target.closest("a");
+          if (!link) return;
+          setMobileOpen(false);
         });
       })();
     </script>

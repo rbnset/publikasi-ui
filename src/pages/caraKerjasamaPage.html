@@ -10,70 +10,117 @@
       rel="stylesheet"
     />
     <title>Cara Kerja Sama</title>
+
+    <!-- Active style: pakai aria-current="page" -->
+    <style>
+      #MenuBar a[aria-current="page"] {
+        background: #fff7f2;
+        color: #ff6b18;
+      }
+      #mobileMenu a[aria-current="page"] {
+        border-color: #ff6b18;
+        background: #fff7f2;
+        color: #ff6b18;
+        font-weight: 700;
+      }
+    </style>
   </head>
 
   <body class="m-0 bg-[#F8F9FC] font-[Poppins] text-[#0B0B0B]">
     <div class="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1130px]">
-      <!-- HEADER: boleh copy dari halaman Home kamu biar konsisten -->
+      <!-- HEADER -->
       <header class="mt-6">
+        <style>
+          /* Active state pakai aria-current="page" (menandai halaman saat ini) */
+          #MenuBar a[aria-current="page"] {
+            background: #fff7f2;
+            color: #ff6b18;
+          }
+          #mobileMenu a[aria-current="page"] {
+            border-color: #ff6b18;
+            background: #fff7f2;
+            color: #ff6b18;
+            font-weight: 700;
+          }
+        </style>
+
         <div class="gap-4 flex items-center justify-between">
           <div class="gap-4 flex shrink-0 items-center">
-            <a href="index.html" class="flex shrink-0 items-center">
-              <img src="../../public/assets/images/logos/logo.svg" alt="Maga" />
+            <a
+              href="index.html"
+              class="flex shrink-0 items-center"
+              aria-label="Beranda BHAYASCIENTIA"
+            >
+              <img
+                src="../../public/assets/images/logos/logo.svg"
+                alt="BHAYASCIENTIA"
+              />
             </a>
           </div>
 
           <div class="gap-3 flex items-center">
+            <!-- Desktop Menu -->
             <nav
               id="MenuBar"
               class="xl:flex hidden items-center"
-              aria-label="Main menu"
+              aria-label="Menu utama"
             >
               <div
                 class="gap-1 bg-white p-1 inline-flex flex-wrap items-center rounded-full ring-1 ring-[#EEF0F7]"
               >
                 <a
                   href="index.html"
+                  data-nav="home"
+                  aria-current="page"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
-                  >Home</a
+                  >Beranda</a
                 >
+
                 <a
                   href="publicationPage.html"
+                  data-nav="publication"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
-                  >Publication</a
+                  >Publikasi</a
                 >
+
                 <a
                   href="eventPage.html"
+                  data-nav="event"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Event</a
                 >
+
                 <a
                   href="aboutPage.html"
+                  data-nav="about"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
-                  >About</a
+                  >Tentang</a
                 >
+
                 <a
                   href="contatUsPage.html"
+                  data-nav="contact"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
-                  >Contact</a
+                  >Kontak</a
                 >
               </div>
             </nav>
 
+            <!-- Desktop CTA -->
             <a
-              href="contatUsPage.html"
+              href="authorRegisterPage.html"
               class="text-sm font-bold text-white xl:flex hidden h-[44px] shrink-0 items-center justify-center rounded-full bg-[#FF6B18] px-[18px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
             >
-              Daftar Author
+              Daftar penulis
             </a>
 
-            <!-- Mobile hamburger (opsional: copy JS dari Home jika dipakai) -->
+            <!-- Mobile hamburger -->
             <button
               id="hamburgerBtn"
               class="h-10 w-10 bg-white xl:hidden flex items-center justify-center rounded-full border border-[#EEF0F7]"
               aria-controls="mobileMenu"
               aria-expanded="false"
-              aria-label="Toggle menu"
+              aria-label="Buka menu"
               type="button"
             >
               <svg
@@ -100,7 +147,7 @@
           </div>
         </div>
 
-        <!-- Mobile overlay + menu (opsional: copy dari Home) -->
+        <!-- Mobile overlay + menu -->
         <div
           id="mobileOverlay"
           class="inset-0 bg-black/25 xl:hidden fixed z-40 hidden backdrop-blur-[2px]"
@@ -111,38 +158,52 @@
           <div
             class="space-y-4 rounded-2xl bg-white p-3 border border-[#EEF0F7]"
           >
-            <div class="gap-2 grid grid-cols-1" aria-label="Main menu mobile">
+            <div
+              class="gap-2 grid grid-cols-1"
+              aria-label="Menu utama versi mobile"
+            >
               <a
                 href="index.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
-                >Home</a
+                data-nav="home"
+                aria-current="page"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                >Beranda</a
               >
+
               <a
                 href="publicationPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
-                >Publication</a
+                data-nav="publication"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                >Publikasi</a
               >
+
               <a
                 href="eventPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
+                data-nav="event"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                 >Event</a
               >
+
               <a
                 href="aboutPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
-                >About</a
-              >
-              <a
-                href="contatUsPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
-                >Contact</a
+                data-nav="about"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                >Tentang</a
               >
 
               <a
                 href="contatUsPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-bold text-white bg-[#FF6B18] text-center hover:shadow-[0_10px_20px_0_#FF6B1880]"
+                data-nav="contact"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                >Kontak</a
               >
-                Ajukan Kerja Sama
+
+              <!-- CTA mobile -->
+              <a
+                href="authorRegisterPage.html"
+                class="rounded-xl px-4 py-3 text-sm font-bold text-white bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
+              >
+                Daftar penulis
               </a>
             </div>
           </div>
@@ -150,6 +211,7 @@
       </header>
 
       <main class="mt-10 pb-16 sm:mt-14 sm:pb-20">
+        <!-- (ISI MAIN ANDA TETAP, tidak diubah) -->
         <!-- HERO -->
         <section class="text-center">
           <p
