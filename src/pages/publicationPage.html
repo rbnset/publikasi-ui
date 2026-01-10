@@ -147,14 +147,35 @@
   <body class="m-0 bg-[#F8F9FC] font-['Poppins'] text-[#0B0B0B]">
     <!-- CONTAINER -->
     <div class="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1130px]">
-      <!-- HEADER -->
+      <!-- HEADER (Halaman: Publikasi) -->
       <header class="mt-6">
+        <style>
+          /* Active state pakai aria-current="page" */
+          #MenuBar a[aria-current="page"] {
+            background: #fff7f2;
+            color: #ff6b18;
+          }
+          #mobileMenu a[aria-current="page"] {
+            border-color: #ff6b18;
+            background: #fff7f2;
+            color: #ff6b18;
+            font-weight: 700;
+          }
+        </style>
+
         <!-- TOP BAR -->
         <div class="gap-4 flex items-center justify-between">
           <!-- Left: Logo -->
           <div class="gap-4 flex shrink-0 items-center">
-            <a href="index.html" class="flex shrink-0 items-center">
-              <img src="../../public/assets/images/logos/logo.svg" alt="Maga" />
+            <a
+              href="index.html"
+              class="flex shrink-0 items-center"
+              aria-label="Beranda BHAYASCIENTIA"
+            >
+              <img
+                src="../../public/assets/images/logos/logo.svg"
+                alt="BHAYASCIENTIA"
+              />
             </a>
           </div>
 
@@ -164,7 +185,7 @@
             <nav
               id="MenuBar"
               class="xl:flex hidden items-center"
-              aria-label="Main menu"
+              aria-label="Menu utama"
             >
               <div
                 class="gap-1 bg-white p-1 inline-flex flex-wrap rounded-full ring-1 ring-[#EEF0F7]"
@@ -173,14 +194,16 @@
                   href="index.html"
                   data-nav="home"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Home</a
+                  >Beranda</a
                 >
 
+                <!-- PUBLIKASI AKTIF -->
                 <a
                   href="publicationPage.html"
                   data-nav="publication"
+                  aria-current="page"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Publication</a
+                  >Publikasi</a
                 >
 
                 <a
@@ -194,14 +217,14 @@
                   href="aboutPage.html"
                   data-nav="about"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >About</a
+                  >Tentang</a
                 >
 
                 <a
                   href="contatUsPage.html"
                   data-nav="contact"
                   class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                  >Contact</a
+                  >Kontak</a
                 >
               </div>
             </nav>
@@ -213,7 +236,7 @@
               class="xl:flex h-10 w-10 bg-white hidden items-center justify-center rounded-full border border-[#EEF0F7] transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
               aria-controls="searchPanel"
               aria-expanded="false"
-              aria-label="Open search"
+              aria-label="Buka pencarian"
             >
               <img
                 src="../../public/assets/images/icons/search-normal.svg"
@@ -230,11 +253,11 @@
               <span class="h-5 w-5 flex shrink-0">
                 <img
                   src="../../public/assets/images/icons/favorite-chart.svg"
-                  alt="icon"
+                  alt=""
                   class="h-full w-full"
                 />
               </span>
-              <span>Subscription</span>
+              <span>Berlangganan</span>
             </a>
 
             <!-- Mobile hamburger -->
@@ -243,7 +266,7 @@
               class="xl:hidden h-10 w-10 bg-white flex items-center justify-center rounded-full border border-[#EEF0F7]"
               aria-controls="mobileMenu"
               aria-expanded="false"
-              aria-label="Toggle menu"
+              aria-label="Buka menu"
               type="button"
             >
               <svg
@@ -288,7 +311,7 @@
               <button
                 type="submit"
                 class="h-5 w-5 flex shrink-0"
-                aria-label="Search"
+                aria-label="Cari"
               >
                 <img
                   src="../../public/assets/images/icons/search-normal.svg"
@@ -302,14 +325,14 @@
                 name="q"
                 autocomplete="off"
                 class="font-semibold placeholder:font-normal w-full appearance-none outline-none placeholder:text-[#A3A6AE]"
-                placeholder="Search hot trendy news today..."
+                placeholder="Cari publikasi, topik, atau penulis…"
               />
 
               <button
                 type="reset"
                 id="searchClearBtn"
                 class="h-8 w-8 hidden shrink-0 items-center justify-center rounded-full hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                aria-label="Clear search"
+                aria-label="Hapus pencarian"
               >
                 <span class="text-lg leading-none">&times;</span>
               </button>
@@ -338,11 +361,11 @@
               <button
                 type="submit"
                 class="h-5 w-5 flex shrink-0"
-                aria-label="Search"
+                aria-label="Cari"
               >
                 <img
                   src="../../public/assets/images/icons/search-normal.svg"
-                  alt="icon"
+                  alt=""
                 />
               </button>
               <input
@@ -350,7 +373,7 @@
                 name="q"
                 autocomplete="off"
                 class="font-semibold placeholder:font-normal w-full appearance-none outline-none placeholder:text-[#A3A6AE]"
-                placeholder="Search..."
+                placeholder="Cari…"
               />
             </form>
 
@@ -359,7 +382,7 @@
               <a
                 href="#"
                 class="rounded-xl px-4 py-3 text-sm font-bold text-white w-full bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
-                >Subscription</a
+                >Berlangganan</a
               >
             </div>
 
@@ -370,63 +393,45 @@
               >
                 MENU
               </p>
-              <div class="mt-2 gap-2 grid" aria-label="Main menu mobile">
+              <div class="mt-2 gap-2 grid" aria-label="Menu utama versi mobile">
                 <a
                   href="index.html"
+                  data-nav="home"
                   class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                  >Home</a
+                  >Beranda</a
                 >
+
+                <!-- PUBLIKASI AKTIF -->
                 <a
                   href="publicationPage.html"
+                  data-nav="publication"
+                  aria-current="page"
                   class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                  >Publication</a
+                  >Publikasi</a
                 >
+
                 <a
                   href="eventPage.html"
+                  data-nav="event"
                   class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
                   >Event</a
                 >
+
                 <a
                   href="aboutPage.html"
+                  data-nav="about"
                   class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                  >About</a
+                  >Tentang</a
                 >
+
                 <a
                   href="contatUsPage.html"
+                  data-nav="contact"
                   class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                  >Contact</a
+                  >Kontak</a
                 >
               </div>
             </div>
-
-            <!-- Categories (mobile) -->
-            <!-- <div id="CategoryWrapMobile">
-              <p
-                class="px-1 font-bold tracking-wide text-[11px] text-[#A3A6AE]"
-              >
-                FILTER
-              </p>
-              <div
-                class="mt-2 gap-2 flex flex-wrap"
-                aria-label="Categories mobile"
-              >
-                <a
-                  href="categoryPage.html?c=health"
-                  class="bg-white px-4 py-2 text-sm font-semibold inline-flex items-center rounded-full border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                  >Health</a
-                >
-                <a
-                  href="categoryPage.html?c=business"
-                  class="bg-white px-4 py-2 text-sm font-semibold inline-flex items-center rounded-full border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                  >Business</a
-                >
-                <a
-                  href="categoryPage.html?c=entertainment"
-                  class="bg-white px-4 py-2 text-sm font-semibold inline-flex items-center rounded-full border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-                  >Entertainment</a
-                >
-              </div>
-            </div> -->
           </div>
         </div>
       </header>
