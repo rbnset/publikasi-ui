@@ -149,52 +149,85 @@
     <div class="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1130px]">
       <!-- HEADER -->
       <header class="mt-6">
-        <!-- Top bar -->
-        <nav id="Navbar" class="gap-4 flex items-center">
-          <!-- Logo -->
+        <!-- TOP BAR -->
+        <div class="gap-4 flex items-center justify-between">
+          <!-- Left: Logo -->
           <div class="gap-4 flex shrink-0 items-center">
-            <a href="index.html" class="flex shrink-0">
-              <img src="../../public/assets/images/logos/logo.svg" alt="logo" />
+            <a href="index.html" class="flex shrink-0 items-center">
+              <img src="../../public/assets/images/logos/logo.svg" alt="Maga" />
             </a>
-            <div class="lg:block h-12 hidden border border-[#E8EBF4]"></div>
           </div>
 
-          <!-- Search (desktop) -->
-          <form
-            action="searchPage.html"
-            class="lg:flex bg-white hidden max-w-[520px] flex-1 items-center gap-[10px] rounded-full border border-[#E8EBF4] p-[12px_20px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FF6B18]"
-          >
+          <!-- Right cluster -->
+          <div class="gap-3 flex items-center">
+            <!-- Desktop Menu -->
+            <nav
+              id="MenuBar"
+              class="xl:flex hidden items-center"
+              aria-label="Main menu"
+            >
+              <div
+                class="gap-1 bg-white p-1 inline-flex flex-wrap rounded-full ring-1 ring-[#EEF0F7]"
+              >
+                <a
+                  href="index.html"
+                  data-nav="home"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  >Home</a
+                >
+
+                <a
+                  href="publicationPage.html"
+                  data-nav="publication"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  >Publication</a
+                >
+
+                <a
+                  href="eventPage.html"
+                  data-nav="event"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  >Event</a
+                >
+
+                <a
+                  href="aboutPage.html"
+                  data-nav="about"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  >About</a
+                >
+
+                <a
+                  href="contatUsPage.html"
+                  data-nav="contact"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  >Contact</a
+                >
+              </div>
+            </nav>
+
+            <!-- Search icon (desktop) -->
             <button
-              type="submit"
-              class="w-5 h-5 flex shrink-0"
-              aria-label="Search"
+              id="searchToggleBtn"
+              type="button"
+              class="xl:flex h-10 w-10 bg-white hidden items-center justify-center rounded-full border border-[#EEF0F7] transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+              aria-controls="searchPanel"
+              aria-expanded="false"
+              aria-label="Open search"
             >
               <img
                 src="../../public/assets/images/icons/search-normal.svg"
-                alt="icon"
+                alt=""
+                class="h-5 w-5"
               />
             </button>
-            <input
-              type="text"
-              class="font-semibold placeholder:font-normal w-full appearance-none outline-none placeholder:text-[#A3A6AE]"
-              placeholder="Search hot trendy news today..."
-            />
-          </form>
 
-          <!-- Actions (desktop) -->
-          <div class="lg:flex gap-3 hidden shrink-0 items-center">
-            <a
-              href="searchPage.html"
-              class="py-3 gap-2 font-semibold text-sm bg-white flex items-center justify-center rounded-full border border-[#EEF0F7] px-[18px] transition-all duration-300 hover:ring-2 hover:ring-[#FF6B18]"
-            >
-              Search
-            </a>
-
+            <!-- Desktop CTA -->
             <a
               href="#"
-              class="py-3 gap-2 font-bold text-sm text-white flex items-center justify-center rounded-full bg-[#FF6B18] px-[18px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
+              class="xl:flex gap-2 py-3 text-sm font-bold text-white hidden shrink-0 items-center justify-center rounded-full bg-[#FF6B18] px-[18px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F9FC]"
             >
-              <span class="w-5 h-5 flex shrink-0">
+              <span class="h-5 w-5 flex shrink-0">
                 <img
                   src="../../public/assets/images/icons/favorite-chart.svg"
                   alt="icon"
@@ -203,52 +236,108 @@
               </span>
               <span>Subscription</span>
             </a>
+
+            <!-- Mobile hamburger -->
+            <button
+              id="hamburgerBtn"
+              class="xl:hidden h-10 w-10 bg-white flex items-center justify-center rounded-full border border-[#EEF0F7]"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+              aria-label="Toggle menu"
+              type="button"
+            >
+              <svg
+                id="iconBurger"
+                class="h-5 w-5 block"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg
+                id="iconClose"
+                class="h-5 w-5 hidden"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
           </div>
+        </div>
 
-          <!-- Mobile hamburger -->
-          <button
-            id="hamburgerBtn"
-            class="lg:hidden w-10 h-10 bg-white ml-auto flex items-center justify-center rounded-full border border-[#EEF0F7]"
-            aria-controls="mobileMenu"
-            aria-expanded="false"
-            aria-label="Toggle menu"
-          >
-            <svg
-              id="iconBurger"
-              class="w-5 h-5 block"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg
-              id="iconClose"
-              class="w-5 h-5 hidden"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          </button>
-        </nav>
+        <!-- SEARCH OVERLAY (desktop only) -->
+        <div
+          id="searchOverlay"
+          class="inset-0 bg-black/25 pointer-events-none fixed z-40 hidden backdrop-blur-[2px]"
+          aria-hidden="true"
+        ></div>
 
-        <!-- Mobile panel (Search + Actions + Menu) -->
-        <div id="mobileMenu" class="lg:hidden mt-4 hidden">
+        <!-- SEARCH PANEL (desktop) -->
+        <div id="searchPanel" class="relative z-50 hidden">
+          <div class="mt-4 flex justify-center">
+            <form
+              action="searchPage.html"
+              role="search"
+              class="max-w-xl bg-white flex w-full items-center gap-[10px] rounded-full border border-[#E8EBF4] p-[12px_20px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FF6B18]"
+            >
+              <button
+                type="submit"
+                class="h-5 w-5 flex shrink-0"
+                aria-label="Search"
+              >
+                <img
+                  src="../../public/assets/images/icons/search-normal.svg"
+                  alt=""
+                />
+              </button>
+
+              <input
+                id="searchInputDesktop"
+                type="text"
+                name="q"
+                autocomplete="off"
+                class="font-semibold placeholder:font-normal w-full appearance-none outline-none placeholder:text-[#A3A6AE]"
+                placeholder="Search hot trendy news today..."
+              />
+
+              <button
+                type="reset"
+                id="searchClearBtn"
+                class="h-8 w-8 hidden shrink-0 items-center justify-center rounded-full hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                aria-label="Clear search"
+              >
+                <span class="text-lg leading-none">&times;</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- MOBILE OVERLAY -->
+        <div
+          id="mobileOverlay"
+          class="inset-0 bg-black/25 xl:hidden fixed z-40 hidden backdrop-blur-[2px]"
+          aria-hidden="true"
+        ></div>
+
+        <!-- MOBILE PANEL -->
+        <div id="mobileMenu" class="mt-4 xl:hidden relative z-50 hidden">
           <div
-            class="rounded-2xl bg-white p-3 space-y-3 border border-[#EEF0F7]"
+            class="space-y-4 rounded-2xl bg-white p-3 border border-[#EEF0F7]"
           >
             <!-- Search (mobile) -->
             <form
               action="searchPage.html"
               class="bg-white flex items-center gap-[10px] rounded-full border border-[#E8EBF4] p-[12px_16px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FF6B18]"
+              role="search"
             >
               <button
                 type="submit"
-                class="w-5 h-5 flex shrink-0"
+                class="h-5 w-5 flex shrink-0"
                 aria-label="Search"
               >
                 <img
@@ -258,153 +347,88 @@
               </button>
               <input
                 type="text"
+                name="q"
+                autocomplete="off"
                 class="font-semibold placeholder:font-normal w-full appearance-none outline-none placeholder:text-[#A3A6AE]"
                 placeholder="Search..."
               />
             </form>
 
-            <!-- Actions (mobile) -->
-            <div class="sm:grid-cols-2 gap-2 grid grid-cols-1">
-              <a
-                href="searchPage.html"
-                class="rounded-xl px-4 py-3 font-semibold text-sm bg-white w-full border border-[#EEF0F7] text-center transition-colors duration-300 hover:border-[#FF6B18]"
-              >
-                Search
-              </a>
-
+            <!-- CTA (mobile) -->
+            <div class="gap-2 sm:grid-cols-2 grid grid-cols-1">
               <a
                 href="#"
-                class="rounded-xl px-4 py-3 font-bold text-sm text-white w-full bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
+                class="rounded-xl px-4 py-3 text-sm font-bold text-white w-full bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
+                >Subscription</a
               >
-                Subscription
-              </a>
             </div>
 
             <!-- Menu (mobile) -->
-            <div class="gap-2 pt-1 grid">
-              <a
-                href="homePage.html"
-                class="rounded-xl px-4 py-3 font-semibold text-sm border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+            <div>
+              <p
+                class="px-1 font-bold tracking-wide text-[11px] text-[#A3A6AE]"
               >
-                Home
-              </a>
-              <a
-                href="publicationPage.html"
-                class="rounded-xl px-4 py-3 font-semibold text-sm border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-              >
-                Publication
-              </a>
-              <a
-                href="eventPage.html"
-                class="rounded-xl px-4 py-3 font-semibold text-sm border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-              >
-                Event
-              </a>
-              <a
-                href="aboutPage.html"
-                class="rounded-xl px-4 py-3 font-semibold text-sm border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-              >
-                About
-              </a>
-              <a
-                href="contatUsPage.html"
-                class="rounded-xl px-4 py-3 font-semibold text-sm border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
-              >
-                Contact
-              </a>
+                MENU
+              </p>
+              <div class="mt-2 gap-2 grid" aria-label="Main menu mobile">
+                <a
+                  href="index.html"
+                  class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >Home</a
+                >
+                <a
+                  href="publicationPage.html"
+                  class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >Publication</a
+                >
+                <a
+                  href="eventPage.html"
+                  class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >Event</a
+                >
+                <a
+                  href="aboutPage.html"
+                  class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >About</a
+                >
+                <a
+                  href="contatUsPage.html"
+                  class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >Contact</a
+                >
+              </div>
             </div>
+
+            <!-- Categories (mobile) -->
+            <!-- <div id="CategoryWrapMobile">
+              <p
+                class="px-1 font-bold tracking-wide text-[11px] text-[#A3A6AE]"
+              >
+                FILTER
+              </p>
+              <div
+                class="mt-2 gap-2 flex flex-wrap"
+                aria-label="Categories mobile"
+              >
+                <a
+                  href="categoryPage.html?c=health"
+                  class="bg-white px-4 py-2 text-sm font-semibold inline-flex items-center rounded-full border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >Health</a
+                >
+                <a
+                  href="categoryPage.html?c=business"
+                  class="bg-white px-4 py-2 text-sm font-semibold inline-flex items-center rounded-full border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >Business</a
+                >
+                <a
+                  href="categoryPage.html?c=entertainment"
+                  class="bg-white px-4 py-2 text-sm font-semibold inline-flex items-center rounded-full border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                  >Entertainment</a
+                >
+              </div>
+            </div> -->
           </div>
         </div>
-
-        <!-- CATEGORY / MENU BAR (desktop) - tanpa scroll/swiper -->
-        <nav
-          id="Category"
-          class="lg:flex mt-6 gap-2 sm:gap-3 md:gap-4 hidden flex-wrap items-center justify-center"
-        >
-          <a
-            href="homePage.html"
-            class="py-2.5 gap-2 font-semibold text-sm bg-white flex items-center rounded-full border border-[#EEF0F7] px-[18px] transition-colors duration-300 hover:border-[#FF6B18] hover:ring-2 hover:ring-[#FF6B18]/20"
-          >
-            <span class="w-5 h-5 flex shrink-0">
-              <img
-                src="../../public/assets/images/icons/heart.svg"
-                alt="icon"
-                class="h-full w-full"
-              />
-            </span>
-            <span>Home</span>
-          </a>
-
-          <a
-            href="publicationPage.html"
-            class="py-2.5 gap-2 font-semibold text-sm bg-white flex items-center rounded-full border border-[#EEF0F7] px-[18px] transition-colors duration-300 hover:border-[#FF6B18] hover:ring-2 hover:ring-[#FF6B18]/20"
-          >
-            <span class="w-5 h-5 flex shrink-0">
-              <img
-                src="../../public/assets/images/icons/heart.svg"
-                alt="icon"
-                class="h-full w-full"
-              />
-            </span>
-            <span>Publication</span>
-          </a>
-
-          <a
-            href="eventPage.html"
-            class="py-2.5 gap-2 font-semibold text-sm bg-white flex items-center rounded-full border border-[#EEF0F7] px-[18px] transition-colors duration-300 hover:border-[#FF6B18] hover:ring-2 hover:ring-[#FF6B18]/20"
-          >
-            <span class="w-5 h-5 flex shrink-0">
-              <img
-                src="../../public/assets/images/icons/car.svg"
-                alt="icon"
-                class="h-full w-full"
-              />
-            </span>
-            <span>Event</span>
-          </a>
-
-          <a
-            href="aboutPage.html"
-            class="py-2.5 gap-2 font-semibold text-sm bg-white flex items-center rounded-full border border-[#EEF0F7] px-[18px] transition-colors duration-300 hover:border-[#FF6B18] hover:ring-2 hover:ring-[#FF6B18]/20"
-          >
-            <span class="w-5 h-5 flex shrink-0">
-              <img
-                src="../../public/assets/images/icons/car.svg"
-                alt="icon"
-                class="h-full w-full"
-              />
-            </span>
-            <span>About</span>
-          </a>
-
-          <a
-            href="contatUsPage.html"
-            class="py-2.5 gap-2 font-semibold text-sm bg-white flex items-center rounded-full border border-[#EEF0F7] px-[18px] transition-colors duration-300 hover:border-[#FF6B18] hover:ring-2 hover:ring-[#FF6B18]/20"
-          >
-            <span class="w-5 h-5 flex shrink-0">
-              <img
-                src="../../public/assets/images/icons/car.svg"
-                alt="icon"
-                class="h-full w-full"
-              />
-            </span>
-            <span>Contact</span>
-          </a>
-
-          <a
-            href="contatUsPage.html"
-            class="py-2.5 gap-2 font-semibold text-sm bg-white flex items-center rounded-full border border-[#EEF0F7] px-[18px] transition-colors duration-300 hover:border-[#FF6B18] hover:ring-2 hover:ring-[#FF6B18]/20"
-          >
-            <span class="w-5 h-5 flex shrink-0">
-              <img
-                src="../../public/assets/images/icons/car.svg"
-                alt="icon"
-                class="h-full w-full"
-              />
-            </span>
-            <span>Contact</span>
-          </a>
-        </nav>
       </header>
 
       <!-- 3: FEATURED: tetap ditaruh setelah category, tapi dibuat keluar dari padding container -->
@@ -2086,20 +2110,6 @@
           prevEl: "#menuBarPrev",
         },
       });
-
-      // Mobile hamburger toggle
-      const btn = document.getElementById("hamburgerBtn");
-      const panel = document.getElementById("mobileMenu");
-      const iconBurger = document.getElementById("iconBurger");
-      const iconClose = document.getElementById("iconClose");
-
-      btn.addEventListener("click", () => {
-        const isOpen = !panel.classList.contains("hidden");
-        panel.classList.toggle("hidden");
-        btn.setAttribute("aria-expanded", String(!isOpen));
-        iconBurger.classList.toggle("hidden");
-        iconClose.classList.toggle("hidden");
-      });
     </script>
 
     <style>
@@ -2162,7 +2172,115 @@
     </script>
 
     <script>
-      // Data bisa diganti dari API nanti
+      // ====== Mobile menu toggle: overlay + ESC + lock scroll ======
+      const btn = document.getElementById("hamburgerBtn");
+      const panel = document.getElementById("mobileMenu");
+      const overlay = document.getElementById("mobileOverlay");
+      const iconBurger = document.getElementById("iconBurger");
+      const iconClose = document.getElementById("iconClose");
+
+      function setMobileOpen(open) {
+        panel?.classList.toggle("hidden", !open);
+        overlay?.classList.toggle("hidden", !open);
+
+        btn?.setAttribute("aria-expanded", String(open));
+        iconBurger?.classList.toggle("hidden", open);
+        iconClose?.classList.toggle("hidden", !open);
+
+        // lock scroll saat mobile menu terbuka
+        document.documentElement.classList.toggle("overflow-hidden", open);
+        document.body.classList.toggle("overflow-hidden", open);
+      }
+
+      btn?.addEventListener("click", () => {
+        const open = panel?.classList.contains("hidden");
+        setMobileOpen(!!open);
+      });
+
+      overlay?.addEventListener("click", () => setMobileOpen(false));
+
+      // ====== Desktop search toggle (icon -> panel) ======
+      const searchToggleBtn = document.getElementById("searchToggleBtn");
+      const searchPanel = document.getElementById("searchPanel");
+      const searchOverlay = document.getElementById("searchOverlay");
+      const searchInputDesktop = document.getElementById("searchInputDesktop");
+
+      function setSearchOpen(open) {
+        searchPanel?.classList.toggle("hidden", !open);
+
+        searchOverlay?.classList.toggle("hidden", !open);
+        searchOverlay?.classList.toggle("pointer-events-none", !open);
+        searchOverlay?.classList.toggle("pointer-events-auto", open);
+
+        searchToggleBtn?.setAttribute("aria-expanded", String(open));
+
+        document.documentElement.classList.toggle("overflow-hidden", open);
+        document.body.classList.toggle("overflow-hidden", open);
+
+        if (open) setTimeout(() => searchInputDesktop?.focus(), 0);
+      }
+
+      searchToggleBtn?.addEventListener("click", () => {
+        const open = searchPanel?.classList.contains("hidden");
+        setSearchOpen(!!open);
+      });
+
+      searchOverlay?.addEventListener("click", () => setSearchOpen(false));
+
+      // ESC closes open layers (search + mobile menu)
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          setMobileOpen(false);
+          setSearchOpen(false);
+        }
+      });
+
+      // ====== Desktop active menu highlight via pathname ======
+      const current = (
+        location.pathname.split("/").pop() || "index.html"
+      ).toLowerCase();
+      const map = {
+        "index.html": "home",
+        "homepage.html": "home",
+        "publicationpage.html": "publication",
+        "eventpage.html": "event",
+        "aboutpage.html": "about",
+        "contatuspage.html": "contact",
+        "contatuspage.html": "contact",
+      };
+
+      const activeKeyNav = map[current];
+      if (activeKeyNav) {
+        const activeLink = document.querySelector(
+          `#MenuBar a[data-nav="${activeKeyNav}"]`,
+        );
+        if (activeLink) {
+          activeLink.classList.add("bg-[#F4F6FB]");
+          activeLink.setAttribute("aria-current", "page");
+        }
+      }
+
+      // ====== Search clear button logic (desktop) ======
+      const clearBtn = document.getElementById("searchClearBtn");
+
+      function syncClear() {
+        if (!searchInputDesktop || !clearBtn) return;
+        clearBtn.classList.toggle("hidden", !searchInputDesktop.value);
+        clearBtn.classList.toggle("flex", !!searchInputDesktop.value);
+      }
+
+      if (searchInputDesktop && clearBtn) {
+        searchInputDesktop.addEventListener("input", syncClear);
+        clearBtn.addEventListener("click", () => {
+          setTimeout(() => {
+            searchInputDesktop.focus();
+            syncClear();
+          }, 0);
+        });
+        syncClear();
+      }
+
+      // ====== Publication tabs (segmented control) ======
       const publicationTypes = [
         { key: "buku", label: "Buku" },
         { key: "jurnal", label: "Jurnal" },
@@ -2182,34 +2300,31 @@
         "aria-selected:bg-[#FFECE1] aria-selected:text-[#FF6B18]";
 
       function onPublicationTypeChange(key) {
-        // TODO: isi sesuai kebutuhan kamu:
-        // - filter data card / slide
-        // - fetch ulang dari API
-        // - update swiper jika diperlukan
         console.log("Selected:", key);
       }
 
       function renderTabs() {
+        if (!tabsEl) return;
         tabsEl.innerHTML = publicationTypes
           .map(
             (t) => `
-        <button
-          type="button"
-          role="tab"
-          class="${tabBtnClass}"
-          data-key="${t.key}"
-          aria-selected="${t.key === activeKey ? "true" : "false"}"
-        >${t.label}</button>
-      `,
+          <button
+            type="button"
+            role="tab"
+            class="${tabBtnClass}"
+            data-key="${t.key}"
+            aria-selected="${t.key === activeKey ? "true" : "false"}"
+          >${t.label}</button>
+        `,
           )
           .join("");
       }
 
-      tabsEl.addEventListener("click", (e) => {
-        const btn = e.target.closest("button[data-key]");
-        if (!btn) return;
+      tabsEl?.addEventListener("click", (e) => {
+        const b = e.target.closest("button[data-key]");
+        if (!b) return;
 
-        activeKey = btn.dataset.key;
+        activeKey = b.dataset.key;
         renderTabs();
         onPublicationTypeChange(activeKey);
       });
