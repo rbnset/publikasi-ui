@@ -3,36 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link href="../../public/assets/css/output.css" rel="stylesheet" />
     <link href="../styles/main.css" rel="stylesheet" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <title>Kontak</title>
+
+    <title>Kontak — BHAYASCIENTIA</title>
 
     <style>
-      /* Active state pakai aria-current="page" (untuk menandai halaman saat ini) */
+      :root {
+        --brand: #ff6b18;
+        --brandSoft: #fff7f2;
+        --ink: #0b0b0b;
+        --muted: #6b7280;
+        --ring: #eef0f7;
+        --bg: #f8f9fc;
+      }
+
+      /* Active state */
       #MenuBar a[aria-current="page"] {
-        background: #fff7f2;
-        color: #ff6b18;
+        background: var(--brandSoft);
+        color: var(--brand);
       }
       #mobileMenu a[aria-current="page"] {
-        border-color: #ff6b18;
-        background: #fff7f2;
-        color: #ff6b18;
-        font-weight: 700;
+        border-color: var(--brand);
+        background: var(--brandSoft);
+        color: var(--brand);
+        font-weight: 800;
+      }
+
+      /* Skip link */
+      .skip-link {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        transform: translateY(-220%);
+        transition: transform 200ms ease;
+        z-index: 1000;
+      }
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      /* Focus visible */
+      :where(a, button, input, textarea, select):focus-visible {
+        outline: 2px solid var(--brand);
+        outline-offset: 3px;
+      }
+
+      /* Hero background: lebih “kekinian” tapi tetap clean */
+      .hero-bg {
+        background:
+          radial-gradient(
+            900px 220px at 50% 0%,
+            rgba(255, 107, 24, 0.14),
+            transparent 60%
+          ),
+          radial-gradient(
+            560px 220px at 12% 30%,
+            rgba(17, 24, 39, 0.08),
+            transparent 55%
+          ),
+          radial-gradient(
+            520px 220px at 88% 40%,
+            rgba(255, 107, 24, 0.1),
+            transparent 55%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.75)
+          );
+        backdrop-filter: blur(10px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+          scroll-behavior: auto !important;
+        }
       }
     </style>
   </head>
 
-  <body class="m-0 bg-[#F8F9FC] font-[Poppins] text-[#0B0B0B]">
-    <!-- CONTAINER -->
+  <body class="m-0 bg-[#F8F9FC] font-[Poppins] text-[#0B0B0B] antialiased">
+    <a
+      href="#main"
+      class="skip-link bg-white px-4 py-2 text-sm font-bold rounded-full ring-1 ring-[#EEF0F7]"
+    >
+      Lewati ke konten utama
+    </a>
+
     <div class="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1130px]">
-      <!-- HEADER / NAVBAR (Halaman: Kontak) -->
+      <!-- HEADER -->
       <header class="mt-6">
         <div class="gap-4 flex items-center justify-between">
-          <!-- Logo -->
           <div class="gap-4 flex shrink-0 items-center">
             <a
               href="index.html"
@@ -46,67 +116,54 @@
             </a>
           </div>
 
-          <!-- Right -->
           <div class="gap-3 flex items-center">
-            <!-- Desktop Menu -->
             <nav
               id="MenuBar"
               class="xl:flex hidden items-center"
               aria-label="Menu utama"
             >
               <div
-                class="gap-1 bg-white p-1 inline-flex flex-wrap items-center rounded-full ring-1 ring-[#EEF0F7]"
+                class="gap-1 bg-white p-1 shadow-sm inline-flex flex-wrap items-center rounded-full ring-1 ring-[#EEF0F7]"
               >
                 <a
                   href="index.html"
-                  data-nav="home"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Beranda</a
                 >
-
                 <a
                   href="publicationPage.html"
-                  data-nav="publication"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Publikasi</a
                 >
-
                 <a
                   href="eventPage.html"
-                  data-nav="event"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Event</a
                 >
-
                 <a
                   href="aboutPage.html"
-                  data-nav="about"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Tentang</a
                 >
-
-                <!-- KONTAK AKTIF -->
                 <a
                   href="contatUsPage.html"
-                  data-nav="contact"
                   aria-current="page"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Kontak</a
                 >
               </div>
             </nav>
 
-            <!-- Desktop Login button (opsional) -->
             <a
               href="loginPage.html"
-              class="px-5 py-3 text-sm font-bold text-white inline-flex items-center justify-center rounded-full bg-[#FF6B18] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F9FC]"
-              >Masuk</a
+              class="px-5 py-3 text-sm font-bold text-white inline-flex items-center justify-center rounded-full bg-[#FF6B18] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
             >
+              Masuk
+            </a>
 
-            <!-- Mobile hamburger -->
             <button
               id="hamburgerBtn"
-              class="h-10 w-10 bg-white xl:hidden flex items-center justify-center rounded-full border border-[#EEF0F7]"
+              class="h-10 w-10 bg-white xl:hidden shadow-sm flex items-center justify-center rounded-full border border-[#EEF0F7]"
               aria-controls="mobileMenu"
               aria-expanded="false"
               aria-label="Buka menu"
@@ -119,6 +176,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -129,6 +187,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
               </svg>
@@ -136,17 +195,15 @@
           </div>
         </div>
 
-        <!-- MOBILE OVERLAY -->
         <div
           id="mobileOverlay"
-          class="inset-0 bg-black/25 xl:hidden fixed z-40 hidden backdrop-blur-[2px]"
+          class="inset-0 bg-black/30 xl:hidden fixed z-40 hidden backdrop-blur-[2px]"
           aria-hidden="true"
         ></div>
 
-        <!-- MOBILE PANEL -->
         <div id="mobileMenu" class="mt-4 xl:hidden relative z-50 hidden">
           <div
-            class="space-y-4 rounded-2xl bg-white p-3 border border-[#EEF0F7]"
+            class="rounded-2xl bg-white p-3 shadow-sm border border-[#EEF0F7]"
           >
             <div
               class="gap-2 grid grid-cols-1"
@@ -154,44 +211,33 @@
             >
               <a
                 href="index.html"
-                data-nav="home"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Beranda</a
               >
-
               <a
                 href="publicationPage.html"
-                data-nav="publication"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Publikasi</a
               >
-
               <a
                 href="eventPage.html"
-                data-nav="event"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Event</a
               >
-
               <a
                 href="aboutPage.html"
-                data-nav="about"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Tentang</a
               >
-
-              <!-- KONTAK AKTIF -->
               <a
                 href="contatUsPage.html"
-                data-nav="contact"
                 aria-current="page"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Kontak</a
               >
-
               <a
                 href="loginPage.html"
-                class="rounded-xl px-4 py-3 text-sm font-bold text-white bg-[#FF6B18] text-center transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
+                class="rounded-xl px-4 py-3 text-sm font-bold text-white bg-[#FF6B18] text-center hover:shadow-[0_10px_20px_0_#FF6B1880]"
                 >Masuk</a
               >
             </div>
@@ -200,147 +246,217 @@
       </header>
 
       <!-- MAIN -->
-      <main class="mt-10 pb-16 sm:mt-14 sm:pb-20">
-        <!-- Heading -->
-        <section class="text-center">
-          <p
-            class="px-4 py-2 text-xs font-bold inline-flex items-center rounded-full bg-[#FFECE1] text-[#FF6B18]"
-          >
-            Kontak
-          </p>
-          <h1
-            class="mt-4 text-3xl font-bold sm:text-4xl sm:leading-[45px] leading-[40px]"
-          >
-            Hubungi tim kami
-          </h1>
-          <p
-            class="mt-3 max-w-2xl text-sm sm:text-base sm:leading-[24px] mx-auto leading-[21px] text-[#6B7280]"
-          >
-            Punya pertanyaan, masukan, kerja sama, atau ingin melaporkan konten?
-            Kirim pesan melalui form di bawah.
-          </p>
-        </section>
-
-        <!-- Content -->
-        <section class="mt-10 gap-8 lg:grid-cols-2 lg:items-start grid">
-          <!-- Left: info -->
-          <div class="space-y-5 lg:order-1 order-1">
-            <div
-              class="bg-white p-5 sm:p-6 rounded-[22px] ring-1 ring-[#EEF0F7]"
+      <main id="main" class="mt-10 pb-16 sm:mt-14 sm:pb-20">
+        <!-- HERO (lebih “berisi”) -->
+        <section
+          class="hero-bg px-5 py-8 sm:px-10 sm:py-10 rounded-[28px] ring-1 ring-[#EEF0F7]"
+        >
+          <div class="text-center">
+            <p
+              class="px-4 py-2 text-xs font-bold inline-flex items-center rounded-full bg-[#FFECE1] text-[#FF6B18]"
             >
-              <h2 class="text-lg font-bold sm:text-xl text-[#111827]">
-                Info kontak
-              </h2>
-              <p class="mt-2 text-sm leading-[22px] text-[#6B7280]">
-                Jam operasional: Senin–Jumat, 09:00–17:00 WIB (contoh).
-              </p>
+              Kontak
+            </p>
 
-              <div class="mt-5 space-y-3 text-sm font-semibold text-[#111827]">
-                <div class="gap-2 flex flex-wrap items-center">
-                  <span
-                    class="px-3 py-2 font-bold rounded-full bg-[#F4F6FB] text-[11px] text-[#6B7280]"
-                    >Email</span
+            <h1
+              class="mt-4 text-3xl font-extrabold sm:text-4xl sm:leading-[45px] leading-[40px]"
+            >
+              Hubungi tim kami
+            </h1>
+
+            <p
+              class="mt-3 max-w-2xl text-sm sm:text-base sm:leading-[24px] mx-auto leading-[21px] text-[#6B7280]"
+            >
+              Pertanyaan, masukan, kerja sama, atau laporan konten/bug—kirim
+              lewat form, atau gunakan kanal cepat di bawah.
+            </p>
+          </div>
+
+          <!-- Quick channels: bikin hero nggak kosong -->
+          <div class="mt-7 gap-3 sm:grid-cols-3 grid">
+            <a
+              href="mailto:support@maga.news"
+              class="group bg-white/90 rounded-2xl p-4 hover:bg-white hover:shadow-sm border border-[#EEF0F7] transition-all"
+            >
+              <div class="gap-3 flex items-center">
+                <div
+                  class="h-11 w-11 rounded-xl flex items-center justify-center border border-[#FFE2D2] bg-[#FFF7F2]"
+                >
+                  <svg
+                    class="h-5 w-5 text-[#FF6B18]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
                   >
-                  <a
-                    href="mailto:support@maga.news"
-                    class="font-bold text-[#FF6B18] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                    >support@maga.news</a
-                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4 4h16v16H4z"
+                      opacity=".15"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4 8l8 5 8-5"
+                    ></path>
+                  </svg>
                 </div>
-
-                <div class="gap-2 flex flex-wrap items-center">
-                  <span
-                    class="px-3 py-2 font-bold rounded-full bg-[#F4F6FB] text-[11px] text-[#6B7280]"
-                    >WhatsApp</span
-                  >
-                  <a
-                    href="#"
-                    class="font-bold text-[#FF6B18] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
-                    >+62 812-0000-0000</a
-                  >
+                <div class="min-w-0">
+                  <p class="text-sm font-extrabold text-[#111827]">Email</p>
+                  <p class="text-sm truncate text-[#6B7280]">
+                    support@maga.news
+                  </p>
                 </div>
+              </div>
+            </a>
 
-                <div class="gap-2 flex flex-wrap items-center">
-                  <span
-                    class="px-3 py-2 font-bold rounded-full bg-[#F4F6FB] text-[11px] text-[#6B7280]"
-                    >Alamat</span
+            <a
+              href="#"
+              class="group bg-white/90 rounded-2xl p-4 hover:bg-white hover:shadow-sm border border-[#EEF0F7] transition-all"
+            >
+              <div class="gap-3 flex items-center">
+                <div
+                  class="h-11 w-11 rounded-xl flex items-center justify-center border border-[#EEF0F7] bg-[#F4F6FB]"
+                >
+                  <svg
+                    class="h-5 w-5 text-[#111827]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
                   >
-                  <span class="text-[#111827]"
-                    >Depok, Yogyakarta, Indonesia (contoh)</span
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M22 16.92V19a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 5 5l1.58-1.09a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm font-extrabold text-[#111827]">WhatsApp</p>
+                  <p class="text-sm truncate text-[#6B7280]">
+                    +62 812-0000-0000
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            <div class="bg-white/90 rounded-2xl p-4 border border-[#EEF0F7]">
+              <div class="gap-3 flex items-center">
+                <div
+                  class="h-11 w-11 rounded-xl flex items-center justify-center border border-[#EEF0F7] bg-[#F4F6FB]"
+                >
+                  <svg
+                    class="h-5 w-5 text-[#111827]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
                   >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 21s7-4.35 7-10A7 7 0 0 0 5 11c0 5.65 7 10 7 10z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm font-extrabold text-[#111827]">Lokasi</p>
+                  <p class="text-sm truncate text-[#6B7280]">
+                    Depok, Yogyakarta
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
+        <!-- BODY -->
+        <section class="mt-10 gap-8 lg:grid-cols-2 lg:items-start grid">
+          <!-- Left: topik + catatan -->
+          <div class="space-y-5">
             <div
-              class="bg-white p-5 sm:p-6 rounded-[22px] ring-1 ring-[#EEF0F7]"
+              class="bg-white p-5 sm:p-6 shadow-sm rounded-[22px] ring-1 ring-[#EEF0F7]"
             >
-              <h3 class="text-lg font-bold text-[#111827]">Topik cepat</h3>
+              <h2 class="text-lg font-extrabold sm:text-xl text-[#111827]">
+                Topik cepat
+              </h2>
+              <p class="mt-2 text-sm leading-[22px] text-[#6B7280]">
+                Pilih topik untuk mengisi Subjek otomatis.
+              </p>
+
               <div class="mt-4 gap-2 flex flex-wrap">
                 <button
                   type="button"
                   data-topic="Kerja sama"
-                  class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
+                  class="px-4 py-2 text-sm font-bold bg-white rounded-full border border-[#EEF0F7] hover:bg-[#F4F6FB]"
                 >
                   Kerja sama
                 </button>
                 <button
                   type="button"
                   data-topic="Laporan bug"
-                  class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
+                  class="px-4 py-2 text-sm font-bold bg-white rounded-full border border-[#EEF0F7] hover:bg-[#F4F6FB]"
                 >
                   Laporan bug
                 </button>
                 <button
                   type="button"
-                  data-topic="Konten"
-                  class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
+                  data-topic="Laporan konten"
+                  class="px-4 py-2 text-sm font-bold bg-white rounded-full border border-[#EEF0F7] hover:bg-[#F4F6FB]"
                 >
-                  Konten
+                  Laporan konten
                 </button>
                 <button
                   type="button"
                   data-topic="Saran fitur"
-                  class="bg-white px-4 py-2 text-sm font-bold rounded-full border border-[#EEF0F7] text-[#111827] hover:bg-[#F4F6FB]"
+                  class="px-4 py-2 text-sm font-bold bg-white rounded-full border border-[#EEF0F7] hover:bg-[#F4F6FB]"
                 >
                   Saran fitur
                 </button>
               </div>
-              <p
-                class="mt-3 sm:text-sm sm:leading-[21px] text-[11px] leading-[16px] text-[#A3A6AE]"
+
+              <div
+                class="mt-5 rounded-2xl p-4 border border-[#EEF0F7] bg-[#F8F9FC]"
               >
-                (Opsional) tombol ini bisa kamu hubungkan untuk auto-isi
-                “Subjek”.
-              </p>
+                <p class="text-sm font-bold text-[#111827]">Catatan</p>
+                <p class="mt-1 text-sm leading-[22px] text-[#6B7280]">
+                  Jangan kirim password / OTP / data sensitif lewat form ini.
+                </p>
+              </div>
             </div>
           </div>
 
-          <!-- Right: form -->
-          <div class="lg:order-2 order-2">
+          <!-- Right: form (lebih “produk”, bukan blog) -->
+          <div>
             <div
-              class="bg-white p-5 sm:p-6 rounded-[22px] ring-1 ring-[#EEF0F7]"
+              class="bg-white p-5 sm:p-6 shadow-sm rounded-[22px] ring-1 ring-[#EEF0F7]"
             >
               <div class="gap-4 flex items-start justify-between">
                 <div class="min-w-0">
                   <h2
-                    class="text-xl font-bold sm:text-[22px] leading-[28px] text-[#111827]"
+                    class="text-xl font-extrabold sm:text-[22px] text-[#111827]"
                   >
                     Kirim pesan
                   </h2>
-                  <p
-                    class="mt-1 sm:text-sm sm:leading-[21px] text-[11px] leading-[16px] text-[#A3A6AE]"
-                  >
-                    Isi form berikut, tim akan membalas secepatnya.
+                  <p class="mt-1 text-sm text-[#6B7280]">
+                    Tim biasanya merespons pada jam kerja.
                   </p>
                 </div>
-
-                <div class="sm:block hidden">
-                  <span
-                    class="px-4 py-2 text-xs font-bold inline-flex rounded-full bg-[#F4F6FB] text-[#111827]"
-                  >
-                    Support
-                  </span>
-                </div>
+                <span
+                  class="sm:inline-flex px-4 py-2 text-xs font-bold hidden rounded-full border border-[#FFE2D2] bg-[#FFF7F2] text-[#FF6B18]"
+                >
+                  Support
+                </span>
               </div>
 
               <form
@@ -348,43 +464,52 @@
                 class="mt-6 space-y-4"
                 action="#"
                 method="post"
+                novalidate
               >
                 <div class="gap-4 sm:grid-cols-2 grid">
                   <div>
                     <label for="name" class="text-sm font-bold text-[#111827]"
                       >Nama</label
                     >
-                    <div
-                      class="mt-2 gap-3 bg-white flex items-center rounded-full border border-[#E8EBF4] p-[12px_16px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FF6B18]"
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      required
+                      placeholder="Nama kamu"
+                      class="mt-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold placeholder:font-normal w-full border border-[#E8EBF4] outline-none placeholder:text-[#A3A6AE] focus:ring-2 focus:ring-[#FF6B18]"
+                    />
+                    <p
+                      id="errName"
+                      class="mt-2 text-red-600 hidden text-[11px]"
+                      role="alert"
                     >
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        placeholder="Nama kamu"
-                        class="text-sm font-semibold placeholder:font-normal w-full appearance-none bg-transparent outline-none placeholder:text-[#A3A6AE]"
-                      />
-                    </div>
+                      Nama wajib diisi.
+                    </p>
                   </div>
 
                   <div>
                     <label for="email" class="text-sm font-bold text-[#111827]"
                       >Email</label
                     >
-                    <div
-                      class="mt-2 gap-3 bg-white flex items-center rounded-full border border-[#E8EBF4] p-[12px_16px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FF6B18]"
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      inputmode="email"
+                      required
+                      placeholder="nama@email.com"
+                      class="mt-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold placeholder:font-normal w-full border border-[#E8EBF4] outline-none placeholder:text-[#A3A6AE] focus:ring-2 focus:ring-[#FF6B18]"
+                    />
+                    <p
+                      id="errEmail"
+                      class="mt-2 text-red-600 hidden text-[11px]"
+                      role="alert"
                     >
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autocomplete="email"
-                        required
-                        placeholder="nama@email.com"
-                        class="text-sm font-semibold placeholder:font-normal w-full appearance-none bg-transparent outline-none placeholder:text-[#A3A6AE]"
-                      />
-                    </div>
+                      Email tidak valid.
+                    </p>
                   </div>
                 </div>
 
@@ -392,58 +517,65 @@
                   <label for="subject" class="text-sm font-bold text-[#111827]"
                     >Subjek</label
                   >
-                  <div
-                    class="mt-2 gap-3 bg-white flex items-center rounded-full border border-[#E8EBF4] p-[12px_16px] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FF6B18]"
+                  <input
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    required
+                    placeholder="Contoh: Kerja sama media"
+                    class="mt-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold placeholder:font-normal w-full border border-[#E8EBF4] outline-none placeholder:text-[#A3A6AE] focus:ring-2 focus:ring-[#FF6B18]"
+                  />
+                  <p
+                    id="errSubject"
+                    class="mt-2 text-red-600 hidden text-[11px]"
+                    role="alert"
                   >
-                    <input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      required
-                      placeholder="Contoh: Kerja sama media"
-                      class="text-sm font-semibold placeholder:font-normal w-full appearance-none bg-transparent outline-none placeholder:text-[#A3A6AE]"
-                    />
-                  </div>
+                    Subjek wajib diisi.
+                  </p>
                 </div>
 
                 <div>
                   <label for="message" class="text-sm font-bold text-[#111827]"
                     >Pesan</label
                   >
-                  <div
-                    class="mt-2 bg-white p-4 rounded-[18px] border border-[#E8EBF4] transition-all duration-300 focus-within:ring-2 focus-within:ring-[#FF6B18]"
-                  >
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="6"
-                      required
-                      placeholder="Tulis pesan kamu di sini..."
-                      class="text-sm font-semibold placeholder:font-normal w-full resize-none appearance-none bg-transparent outline-none placeholder:text-[#A3A6AE]"
-                    ></textarea>
-                  </div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    required
+                    placeholder="Tulis pesan kamu di sini..."
+                    class="mt-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold placeholder:font-normal w-full resize-none border border-[#E8EBF4] outline-none placeholder:text-[#A3A6AE] focus:ring-2 focus:ring-[#FF6B18]"
+                  ></textarea>
                   <p
-                    class="mt-2 sm:text-sm sm:leading-[21px] text-[11px] leading-[16px] text-[#A3A6AE]"
+                    id="errMessage"
+                    class="mt-2 text-red-600 hidden text-[11px]"
+                    role="alert"
                   >
-                    Jangan tulis password atau data sensitif di pesan.
+                    Pesan wajib diisi.
                   </p>
                 </div>
 
-                <!-- Alert -->
                 <div
                   id="contactSuccess"
                   class="rounded-2xl border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-700 hidden border"
                   role="status"
+                  aria-live="polite"
                 >
                   Pesan terkirim (demo). Nanti ganti dengan request ke backend.
                 </div>
 
                 <button
+                  id="submitBtn"
                   type="submit"
-                  class="px-5 py-3 text-sm font-bold text-white focus-visible:ring-offset-white inline-flex w-full items-center justify-center rounded-full bg-[#FF6B18] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18] focus-visible:ring-offset-2"
+                  class="px-5 py-3 text-sm font-extrabold text-white inline-flex w-full items-center justify-center rounded-full bg-[#FF6B18] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
                 >
                   Kirim pesan
                 </button>
+
+                <p class="text-[11px] leading-[16px] text-[#A3A6AE]">
+                  Dengan mengirim pesan, kamu menyetujui komunikasi balasan dari
+                  tim.
+                </p>
               </form>
             </div>
           </div>
@@ -451,61 +583,144 @@
       </main>
     </div>
 
-    <!-- JS: 1 file/1 blok (biar tidak bertumpuk) -->
     <script>
       (function () {
-        // ===== Mobile menu toggle =====
+        // Mobile menu (toggle + focus trap + restore focus)
         const btn = document.getElementById("hamburgerBtn");
         const panel = document.getElementById("mobileMenu");
         const overlay = document.getElementById("mobileOverlay");
         const iconBurger = document.getElementById("iconBurger");
         const iconClose = document.getElementById("iconClose");
+        let lastFocused = null;
 
-        function setMobileOpen(open) {
-          panel?.classList.toggle("hidden", !open);
-          overlay?.classList.toggle("hidden", !open);
-          btn?.setAttribute("aria-expanded", String(open));
-          iconBurger?.classList.toggle("hidden", open);
-          iconClose?.classList.toggle("hidden", !open);
-          document.documentElement.classList.toggle("overflow-hidden", open);
-          document.body.classList.toggle("overflow-hidden", open);
+        function getFocusable(container) {
+          if (!container) return [];
+          return Array.from(
+            container.querySelectorAll(
+              'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+            ),
+          );
         }
 
-        btn?.addEventListener("click", () => {
-          const open = panel?.classList.contains("hidden");
-          setMobileOpen(!!open);
-        });
+        function setMobileOpen(open) {
+          if (!btn || !panel || !overlay) return;
+          if (open) lastFocused = document.activeElement;
 
+          panel.classList.toggle("hidden", !open);
+          overlay.classList.toggle("hidden", !open);
+          btn.setAttribute("aria-expanded", String(open));
+          iconBurger?.classList.toggle("hidden", open);
+          iconClose?.classList.toggle("hidden", !open);
+
+          document.documentElement.classList.toggle("overflow-hidden", open);
+          document.body.classList.toggle("overflow-hidden", open);
+
+          if (open) getFocusable(panel)[0]?.focus();
+          else if (lastFocused && typeof lastFocused.focus === "function")
+            lastFocused.focus();
+        }
+
+        btn?.addEventListener("click", () =>
+          setMobileOpen(panel?.classList.contains("hidden")),
+        );
         overlay?.addEventListener("click", () => setMobileOpen(false));
-
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") setMobileOpen(false);
+
+          const isOpen = panel && !panel.classList.contains("hidden");
+          if (!isOpen || e.key !== "Tab") return;
+
+          const focusables = getFocusable(panel);
+          if (!focusables.length) return;
+
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
         });
 
-        // Tutup menu setelah klik link di mobile (UX lebih enak)
         panel?.addEventListener("click", (e) => {
           const link = e.target.closest("a");
-          if (!link) return;
-          setMobileOpen(false);
+          if (link) setMobileOpen(false);
         });
 
-        // ===== Demo submit =====
+        // Topik cepat => isi Subjek
+        const subject = document.getElementById("subject");
+        document.addEventListener("click", (e) => {
+          const b = e.target.closest("button[data-topic]");
+          if (!b || !subject) return;
+          subject.value = b.dataset.topic || "";
+          subject.focus();
+        });
+
+        // Validasi inline sederhana + error dekat field (lebih mudah diperbaiki)
         const form = document.getElementById("contactForm");
         const success = document.getElementById("contactSuccess");
+        const submitBtn = document.getElementById("submitBtn");
+
+        const nameEl = document.getElementById("name");
+        const emailEl = document.getElementById("email");
+        const subjectEl = document.getElementById("subject");
+        const messageEl = document.getElementById("message");
+
+        const errName = document.getElementById("errName");
+        const errEmail = document.getElementById("errEmail");
+        const errSubject = document.getElementById("errSubject");
+        const errMessage = document.getElementById("errMessage");
+
+        function show(el, on) {
+          el?.classList.toggle("hidden", !on);
+        }
+        function validEmail(v) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || "").trim());
+        }
 
         form?.addEventListener("submit", (e) => {
           e.preventDefault();
-          success?.classList.remove("hidden");
-          form.reset();
-        });
+          success?.classList.add("hidden");
 
-        // ===== Topik cepat => isi otomatis Subjek =====
-        const subject = document.getElementById("subject");
-        document.addEventListener("click", (e) => {
-          const topicBtn = e.target.closest("button[data-topic]");
-          if (!topicBtn || !subject) return;
-          subject.value = topicBtn.dataset.topic || "";
-          subject.focus();
+          const nameV = nameEl?.value.trim();
+          const emailV = emailEl?.value.trim();
+          const subjectV = subjectEl?.value.trim();
+          const messageV = messageEl?.value.trim();
+
+          const okName = !!nameV;
+          const okEmail = !!emailV && validEmail(emailV);
+          const okSubject = !!subjectV;
+          const okMessage = !!messageV;
+
+          show(errName, !okName);
+          show(errEmail, !okEmail);
+          show(errSubject, !okSubject);
+          show(errMessage, !okMessage);
+
+          if (!(okName && okEmail && okSubject && okMessage)) {
+            if (!okName) return nameEl?.focus();
+            if (!okEmail) return emailEl?.focus();
+            if (!okSubject) return subjectEl?.focus();
+            messageEl?.focus();
+            return;
+          }
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Mengirim...";
+          }
+
+          setTimeout(() => {
+            success?.classList.remove("hidden");
+            form.reset();
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Kirim pesan";
+            }
+          }, 450);
         });
       })();
     </script>

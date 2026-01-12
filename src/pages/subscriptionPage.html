@@ -3,28 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link href="../../public/assets/css/output.css" rel="stylesheet" />
     <link href="../styles/main.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
     <title>Berlangganan — BHAYASCIENTIA</title>
 
     <style>
-      /* Active state pakai aria-current="page" */
-      #MenuBar a[aria-current="page"] {
-        background: #fff7f2;
-        color: #ff6b18;
-      }
-      #mobileMenu a[aria-current="page"] {
-        border-color: #ff6b18;
-        background: #fff7f2;
-        color: #ff6b18;
-        font-weight: 700;
+      :root {
+        --brand: #ff6b18;
+        --brandSoft: #fff7f2;
+        --ink: #0b0b0b;
+        --muted: #6b7280;
+        --ring: #eef0f7;
+        --bg: #f8f9fc;
       }
 
-      /* CTA Berlangganan (mobile) supaya ada ikon + seragam */
+      /* Active state (nav) */
+      #MenuBar a[aria-current="page"] {
+        background: var(--brandSoft);
+        color: var(--brand);
+      }
+      #mobileMenu a[aria-current="page"] {
+        border-color: var(--brand);
+        background: var(--brandSoft);
+        color: var(--brand);
+        font-weight: 800;
+      }
+
+      /* Skip link */
+      .skip-link {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        transform: translateY(-220%);
+        transition: transform 200ms ease;
+        z-index: 1000;
+      }
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      /* Focus visible (keyboard) */
+      :where(a, button, input, textarea, select):focus-visible {
+        outline: 2px solid var(--brand);
+        outline-offset: 3px;
+      }
+
+      /* Hero background: lebih “berisi” */
+      .hero-bg {
+        background:
+          radial-gradient(
+            900px 240px at 50% 0%,
+            rgba(255, 107, 24, 0.16),
+            transparent 60%
+          ),
+          radial-gradient(
+            560px 220px at 12% 30%,
+            rgba(17, 24, 39, 0.08),
+            transparent 55%
+          ),
+          radial-gradient(
+            520px 240px at 88% 40%,
+            rgba(255, 107, 24, 0.1),
+            transparent 55%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(255, 255, 255, 0.78)
+          );
+        backdrop-filter: blur(10px);
+      }
+
+      /* CTA Berlangganan (mobile) */
       .cta-sub-mobile {
         display: flex;
         align-items: center;
@@ -57,67 +113,70 @@
         display: block;
       }
 
-      /* === Cover card checkbox === */
-      .pub-card {
+      /* =========================================================
+     Cards (checkbox/radio) - whitespace lebih enak + tinggi sama
+     ========================================================= */
+
+      /* Label jadi block full */
+      .pub-card,
+      .freq-card {
         position: relative;
         cursor: pointer;
         user-select: none;
+        display: block;
       }
-      .pub-card input[type="checkbox"] {
+
+      /* Input tetap full clickable */
+      .pub-card input,
+      .freq-card input {
         position: absolute;
         inset: 0;
         opacity: 0;
         pointer-events: none;
       }
-      .pub-card .card-ui {
+
+      /* Kartu utama */
+      .card-ui {
         border: 1px solid #eef0f7;
         border-radius: 18px;
         background: #ffffff;
-        padding: 14px;
+
+        /* lebih lega dari sebelumnya */
+        padding: 16px;
+
         transition: 180ms ease;
+
         display: flex;
         gap: 14px;
-        align-items: center;
+
+        /* penting: biar konten tidak kelihatan “numpuk” */
+        align-items: flex-start;
+
+        /* penting: samakan tinggi semua card */
+        min-height: 112px;
       }
-      .pub-card .cover {
-        width: 56px;
-        height: 72px;
-        border-radius: 14px;
-        border: 1px solid #eef0f7;
-        display: grid;
-        place-items: center;
-        flex: 0 0 auto;
-        overflow: hidden;
-      }
-      .pub-card .meta {
-        min-width: 0;
-      }
-      .pub-card .title {
-        font-size: 14px;
-        font-weight: 800;
-        color: #111827;
-        line-height: 1.2;
-      }
-      .pub-card .desc {
-        margin-top: 4px;
-        font-size: 12px;
-        color: #6b7280;
-        line-height: 18px;
-      }
-      .pub-card:hover .card-ui {
+
+      .pub-card:hover .card-ui,
+      .freq-card:hover .card-ui {
         background: #f8f9fc;
         transform: translateY(-1px);
       }
-      .pub-card:has(input:focus-visible) .card-ui {
+
+      .pub-card:has(input:focus-visible) .card-ui,
+      .freq-card:has(input:focus-visible) .card-ui {
         outline: 2px solid #ff6b18;
         outline-offset: 2px;
       }
-      .pub-card:has(input:checked) .card-ui {
+
+      .pub-card:has(input:checked) .card-ui,
+      .freq-card:has(input:checked) .card-ui {
         border-color: #ff6b18;
         background: #fff7f2;
         box-shadow: 0 10px 20px 0 rgba(255, 107, 24, 0.18);
       }
-      .pub-card .check-badge {
+
+      /* Badge centang pojok kanan atas */
+      .check-badge {
         position: absolute;
         top: 10px;
         right: 10px;
@@ -132,15 +191,24 @@
         transform: scale(0.95);
         transition: 180ms ease;
       }
-      .pub-card:has(input:checked) .check-badge {
+      .pub-card:has(input:checked) .check-badge,
+      .freq-card:has(input:checked) .check-badge {
         opacity: 1;
         transform: scale(1);
         border-color: #ff6b18;
       }
-      .pub-icon {
-        width: 20px;
-        height: 20px;
-        display: block;
+
+      /* Cover publikasi */
+      .cover {
+        width: 56px;
+        height: 72px;
+        border-radius: 14px;
+        border: 1px solid #eef0f7;
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        overflow: hidden;
+        margin-top: 1px;
       }
       .cover-buku {
         background: linear-gradient(135deg, #ffece1 0%, #fff7f2 60%);
@@ -152,101 +220,95 @@
         background: linear-gradient(135deg, #e9fff3 0%, #f4fffa 60%);
       }
 
-      /* === Frequency radio cards === */
-      .freq-card {
-        position: relative;
-        cursor: pointer;
-        user-select: none;
-      }
-      .freq-card input[type="radio"] {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        pointer-events: none;
-      }
-      .freq-card .card-ui {
-        border: 1px solid #eef0f7;
-        border-radius: 18px;
-        background: #ffffff;
-        padding: 14px;
-        transition: 180ms ease;
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        min-height: 76px;
-      }
-      .freq-card:hover .card-ui {
-        background: #f8f9fc;
-        transform: translateY(-1px);
-      }
-      .freq-card:has(input:focus-visible) .card-ui {
-        outline: 2px solid #ff6b18;
-        outline-offset: 2px;
-      }
+      /* Icon frekuensi */
       .freq-card .icon {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
         border-radius: 14px;
         border: 1px solid #eef0f7;
         display: grid;
         place-items: center;
         flex: 0 0 auto;
         background: #f4f6fb;
-      }
-      .freq-card .meta {
-        min-width: 0;
-        padding-top: 2px;
-      }
-      .freq-card .title {
-        font-size: 14px;
-        font-weight: 800;
-        color: #111827;
-        line-height: 1.2;
-      }
-      .freq-card .desc {
-        margin-top: 4px;
-        font-size: 12px;
-        color: #6b7280;
-        line-height: 18px;
-      }
-      .freq-card:has(input:checked) .card-ui {
-        border-color: #ff6b18;
-        background: #fff7f2;
-        box-shadow: 0 10px 20px 0 rgba(255, 107, 24, 0.18);
+        margin-top: 2px;
       }
       .freq-card:has(input:checked) .icon {
         background: #ffece1;
         border-color: #ffd9c4;
       }
-      .freq-card .check-badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 26px;
-        height: 26px;
-        border-radius: 999px;
-        background: #ffffff;
-        border: 1px solid #eef0f7;
-        display: grid;
-        place-items: center;
-        opacity: 0;
-        transform: scale(0.95);
-        transition: 180ms ease;
+
+      /* Area teks */
+      .meta {
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        /* biar teks tidak “ketabrak” badge di kanan atas */
+        padding-right: 30px;
       }
-      .freq-card:has(input:checked) .check-badge {
-        opacity: 1;
-        transform: scale(1);
-        border-color: #ff6b18;
+      .title {
+        font-size: 14px;
+        font-weight: 900;
+        color: #111827;
+        line-height: 1.25;
+
+        /* opsional: bikin title rapi 1 baris */
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .desc {
+        margin: 0; /* ganti dari margin-top supaya gap konsisten */
+        font-size: 12px;
+        color: #6b7280;
+        line-height: 18px;
+
+        /* penting: batasi baris supaya tinggi card konsisten */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .pub-icon {
+        width: 20px;
+        height: 20px;
+        display: block;
       }
       .mini-icon {
         width: 18px;
         height: 18px;
         display: block;
       }
+
+      /* Layar kecil: beri tinggi sedikit lebih longgar */
+      @media (max-width: 420px) {
+        .card-ui {
+          min-height: 120px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
   </head>
 
-  <body class="m-0 bg-[#F8F9FC] font-[Poppins] text-[#0B0B0B]">
+  <body class="m-0 bg-[#F8F9FC] font-[Poppins] text-[#0B0B0B] antialiased">
+    <a
+      href="#main"
+      class="skip-link bg-white px-4 py-2 text-sm font-bold rounded-full ring-1 ring-[#EEF0F7]"
+    >
+      Lewati ke konten utama
+    </a>
+
     <div class="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1130px]">
       <!-- HEADER -->
       <header class="mt-6">
@@ -272,51 +334,41 @@
               aria-label="Menu utama"
             >
               <div
-                class="gap-1 bg-white p-1 inline-flex flex-wrap items-center rounded-full ring-1 ring-[#EEF0F7]"
+                class="gap-1 bg-white p-1 shadow-sm inline-flex flex-wrap items-center rounded-full ring-1 ring-[#EEF0F7]"
               >
                 <a
                   href="index.html"
-                  data-nav="home"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Beranda</a
                 >
-
-                <!-- AKTIF: Publikasi (sesuai request) -->
                 <a
                   href="publicationPage.html"
-                  data-nav="publication"
-                  aria-current="page"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Publikasi</a
                 >
-
                 <a
                   href="eventPage.html"
-                  data-nav="event"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Event</a
                 >
-
                 <a
                   href="aboutPage.html"
-                  data-nav="about"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Tentang</a
                 >
-
                 <a
                   href="contatUsPage.html"
-                  data-nav="contact"
-                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18]"
+                  class="px-4 py-2 text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#F4F6FB]"
                   >Kontak</a
                 >
               </div>
             </nav>
 
-            <!-- Desktop CTA Berlangganan (tetap ada) -->
+            <!-- Desktop CTA: tandai sebagai current untuk halaman ini -->
             <a
               href="subscriptionPage.html"
-              class="xl:flex gap-2 py-3 text-sm font-bold text-white hidden shrink-0 items-center justify-center rounded-full bg-[#FF6B18] px-[18px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F9FC]"
+              aria-current="page"
+              class="xl:flex gap-2 py-3 text-sm font-bold text-white hidden shrink-0 items-center justify-center rounded-full bg-[#FF6B18] px-[18px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
             >
               <span class="h-5 w-5 flex shrink-0">
                 <img
@@ -331,7 +383,7 @@
             <!-- Mobile hamburger -->
             <button
               id="hamburgerBtn"
-              class="h-10 w-10 bg-white xl:hidden flex items-center justify-center rounded-full border border-[#EEF0F7]"
+              class="h-10 w-10 bg-white xl:hidden shadow-sm flex items-center justify-center rounded-full border border-[#EEF0F7]"
               aria-controls="mobileMenu"
               aria-expanded="false"
               aria-label="Buka menu"
@@ -344,6 +396,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -354,6 +407,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
               </svg>
@@ -364,14 +418,14 @@
         <!-- MOBILE OVERLAY -->
         <div
           id="mobileOverlay"
-          class="inset-0 bg-black/25 xl:hidden fixed z-40 hidden backdrop-blur-[2px]"
+          class="inset-0 bg-black/30 xl:hidden fixed z-40 hidden backdrop-blur-[2px]"
           aria-hidden="true"
         ></div>
 
         <!-- MOBILE PANEL -->
         <div id="mobileMenu" class="mt-4 xl:hidden relative z-50 hidden">
           <div
-            class="space-y-4 rounded-2xl bg-white p-3 border border-[#EEF0F7]"
+            class="space-y-4 rounded-2xl bg-white p-3 shadow-sm border border-[#EEF0F7]"
           >
             <div
               class="gap-2 grid grid-cols-1"
@@ -379,43 +433,35 @@
             >
               <a
                 href="index.html"
-                data-nav="home"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Beranda</a
               >
-
-              <!-- AKTIF: Publikasi (sesuai request) -->
               <a
                 href="publicationPage.html"
-                data-nav="publication"
-                aria-current="page"
-                class="rounded-xl px-4 py-3 text-sm font-bold border border-[#FF6B18] bg-[#FFF7F2] text-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Publikasi</a
               >
-
               <a
                 href="eventPage.html"
-                data-nav="event"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Event</a
               >
-
               <a
                 href="aboutPage.html"
-                data-nav="about"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Tentang</a
               >
-
               <a
                 href="contatUsPage.html"
-                data-nav="contact"
-                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] transition-colors duration-300 hover:border-[#FF6B18]"
+                class="rounded-xl px-4 py-3 text-sm font-semibold border border-[#EEF0F7] hover:border-[#FF6B18]"
                 >Kontak</a
               >
 
-              <!-- CTA Berlangganan (mobile) + ICON (seragam dengan desktop) -->
-              <a href="subscriptionPage.html" class="cta-sub-mobile">
+              <a
+                href="subscriptionPage.html"
+                class="cta-sub-mobile"
+                aria-current="page"
+              >
                 <span class="cta-icon" aria-hidden="true">
                   <img
                     src="../../public/assets/images/icons/favorite-chart.svg"
@@ -430,30 +476,60 @@
       </header>
 
       <!-- MAIN -->
-      <main class="mt-10 pb-16 sm:mt-14 sm:pb-20">
-        <!-- HERO -->
-        <section class="text-center">
+      <main id="main" class="mt-10 pb-16 sm:mt-14 sm:pb-20">
+        <!-- HERO (lebih berisi + ada value props) -->
+        <section
+          class="hero-bg px-5 py-8 sm:px-10 sm:py-10 rounded-[28px] text-center ring-1 ring-[#EEF0F7]"
+        >
           <p
             class="px-4 py-2 text-xs font-bold inline-flex items-center rounded-full bg-[#FFECE1] text-[#FF6B18]"
           >
             Berlangganan (Gratis)
           </p>
+
           <h1
-            class="mt-4 text-3xl font-bold sm:text-4xl sm:leading-[45px] leading-[40px]"
+            class="mt-4 text-3xl font-extrabold sm:text-4xl sm:leading-[45px] leading-[40px]"
           >
             Pilih update publikasi yang ingin diikuti
           </h1>
+
           <p
             class="mt-3 max-w-2xl text-sm sm:text-base sm:leading-[24px] mx-auto leading-[21px] text-[#6B7280]"
           >
-            Berlangganan memakai email akun yang sudah terdaftar.
+            Berlangganan memakai email akun yang sudah terdaftar, lalu atur tipe
+            dan frekuensi update sesuai kebutuhan.
           </p>
+
+          <div class="mt-7 gap-3 sm:grid-cols-3 grid">
+            <div class="bg-white/90 rounded-2xl p-4 border border-[#EEF0F7]">
+              <p class="text-sm font-extrabold text-[#111827]">Tidak spam</p>
+              <p class="mt-1 text-sm text-[#6B7280]">
+                Pilih mingguan/bulanan/penting saja.
+              </p>
+            </div>
+            <div class="bg-white/90 rounded-2xl p-4 border border-[#EEF0F7]">
+              <p class="text-sm font-extrabold text-[#111827]">
+                Tetap terkurasi
+              </p>
+              <p class="mt-1 text-sm text-[#6B7280]">
+                Update mengikuti rilis yang tayang.
+              </p>
+            </div>
+            <div class="bg-white/90 rounded-2xl p-4 border border-[#EEF0F7]">
+              <p class="text-sm font-extrabold text-[#111827]">Mudah diubah</p>
+              <p class="mt-1 text-sm text-[#6B7280]">
+                Preferensi bisa diatur ulang kapan saja.
+              </p>
+            </div>
+          </div>
         </section>
 
         <!-- PANEL: belum login -->
         <section id="mustLoginPanel" class="mt-10 sm:mt-12 hidden">
-          <div class="bg-white p-5 sm:p-6 rounded-[22px] ring-1 ring-[#EEF0F7]">
-            <h2 class="text-xl font-bold sm:text-[22px] text-[#111827]">
+          <div
+            class="bg-white p-5 sm:p-6 shadow-sm rounded-[22px] ring-1 ring-[#EEF0F7]"
+          >
+            <h2 class="text-xl font-extrabold sm:text-[22px] text-[#111827]">
               Perlu daftar dulu
             </h2>
             <p
@@ -467,16 +543,17 @@
               <a
                 href="registerPage.html"
                 class="px-5 py-3 text-sm font-bold text-white inline-flex items-center justify-center rounded-full bg-[#FF6B18] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
-                >Daftar akun</a
               >
+                Daftar akun
+              </a>
 
               <a
                 href="loginPage.html"
                 class="bg-white px-5 py-3 text-sm font-bold inline-flex items-center justify-center rounded-full border border-[#EEF0F7] transition-all duration-300 hover:bg-[#F4F6FB]"
-                >Masuk</a
               >
+                Masuk
+              </a>
 
-              <!-- DEMO helper -->
               <button
                 type="button"
                 id="demoSetLogin"
@@ -492,397 +569,440 @@
           </div>
         </section>
 
-        <!-- PANEL: sudah login -->
+        <!-- PANEL: sudah login (2 kolom: form + ringkasan) -->
         <section id="subPanel" class="mt-10 sm:mt-12 hidden">
-          <div class="bg-white p-5 sm:p-6 rounded-[22px] ring-1 ring-[#EEF0F7]">
-            <div
-              class="gap-4 sm:flex-row sm:items-start sm:justify-between flex flex-col"
-            >
-              <div class="min-w-0">
-                <h2 class="text-xl font-bold sm:text-[22px] text-[#111827]">
-                  Preferensi berlangganan
-                </h2>
-                <p
-                  class="mt-2 text-sm sm:text-base sm:leading-[24px] leading-[22px] text-[#6B7280]"
-                >
-                  Pilih tipe publikasi dan frekuensi email pembaruan.
-                </p>
-
-                <div class="mt-4 text-sm font-semibold text-[#111827]">
-                  Email akun:
-                  <span id="userEmailText" class="text-[#FF6B18]">-</span>
-                </div>
-
+          <div class="gap-8 lg:grid-cols-3 grid">
+            <!-- Left: form (2/3) -->
+            <div class="lg:col-span-2">
+              <div
+                class="bg-white p-5 sm:p-6 shadow-sm rounded-[22px] ring-1 ring-[#EEF0F7]"
+              >
                 <div
-                  id="subSuccess"
-                  class="mt-4 rounded-2xl border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-700 hidden border"
-                  role="status"
+                  class="gap-4 sm:flex-row sm:items-start sm:justify-between flex flex-col"
                 >
-                  Preferensi tersimpan (demo). Pembaruan akan dikirim ke email
-                  akun kamu.
-                </div>
-              </div>
+                  <div class="min-w-0">
+                    <h2
+                      class="text-xl font-extrabold sm:text-[22px] text-[#111827]"
+                    >
+                      Preferensi berlangganan
+                    </h2>
+                    <p
+                      class="mt-2 text-sm sm:text-base sm:leading-[24px] leading-[22px] text-[#6B7280]"
+                    >
+                      Pilih tipe publikasi dan frekuensi email pembaruan.
+                    </p>
 
-              <div class="shrink-0">
-                <button
-                  type="button"
-                  id="demoLogout"
-                  class="bg-white px-5 py-3 text-sm font-bold inline-flex items-center justify-center rounded-full border border-[#EEF0F7] transition-all duration-300 hover:bg-[#F4F6FB]"
+                    <div class="mt-4 text-sm font-semibold text-[#111827]">
+                      Email akun:
+                      <span id="userEmailText" class="text-[#FF6B18]">-</span>
+                    </div>
+
+                    <div
+                      id="subSuccess"
+                      class="mt-4 rounded-2xl border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-700 hidden border"
+                      role="status"
+                      aria-live="polite"
+                    >
+                      Preferensi tersimpan (demo). Pembaruan akan dikirim ke
+                      email akun kamu.
+                    </div>
+                  </div>
+
+                  <div class="shrink-0">
+                    <button
+                      type="button"
+                      id="demoLogout"
+                      class="bg-white px-5 py-3 text-sm font-bold inline-flex items-center justify-center rounded-full border border-[#EEF0F7] transition-all duration-300 hover:bg-[#F4F6FB]"
+                    >
+                      Keluar (demo)
+                    </button>
+                  </div>
+                </div>
+
+                <form
+                  id="subscribeForm"
+                  class="mt-6 space-y-6"
+                  action="#"
+                  method="post"
+                  novalidate
                 >
-                  Keluar (demo)
-                </button>
+                  <!-- Checkbox group -->
+                  <fieldset
+                    class="rounded-2xl p-4 border border-[#EEF0F7] bg-[#F8F9FC]"
+                  >
+                    <legend class="text-sm font-bold px-1 text-[#111827]">
+                      Tipe publikasi yang ingin diikuti
+                    </legend>
+
+                    <div class="mt-3 gap-3 sm:grid-cols-3 grid grid-cols-1">
+                      <label class="pub-card">
+                        <input type="checkbox" name="types" value="buku" />
+                        <span class="check-badge" aria-hidden="true">
+                          <svg
+                            class="pub-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#FF6B18"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M20 6L9 17l-5-5"
+                            />
+                          </svg>
+                        </span>
+                        <span class="card-ui">
+                          <span class="cover cover-buku" aria-hidden="true">
+                            <svg
+                              class="pub-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#FF6B18"
+                              stroke-width="2"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20"
+                              />
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5V4.5A2.5 2.5 0 0 1 6.5 2z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="meta">
+                            <span class="title">Buku</span>
+                            <span class="desc"
+                              >Update buku/monograf terbaru dan rilis
+                              edisi.</span
+                            >
+                          </span>
+                        </span>
+                      </label>
+
+                      <label class="pub-card">
+                        <input
+                          type="checkbox"
+                          name="types"
+                          value="jurnal"
+                          checked
+                        />
+                        <span class="check-badge" aria-hidden="true">
+                          <svg
+                            class="pub-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#FF6B18"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M20 6L9 17l-5-5"
+                            />
+                          </svg>
+                        </span>
+                        <span class="card-ui">
+                          <span class="cover cover-jurnal" aria-hidden="true">
+                            <svg
+                              class="pub-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#111827"
+                              stroke-width="2"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                              />
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M14 2v6h6"
+                              />
+                            </svg>
+                          </span>
+                          <span class="meta">
+                            <span class="title">Jurnal</span>
+                            <span class="desc"
+                              >Rilis artikel terbaru dari tim editorial.</span
+                            >
+                          </span>
+                        </span>
+                      </label>
+
+                      <label class="pub-card">
+                        <input type="checkbox" name="types" value="opini" />
+                        <span class="check-badge" aria-hidden="true">
+                          <svg
+                            class="pub-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#FF6B18"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M20 6L9 17l-5-5"
+                            />
+                          </svg>
+                        </span>
+                        <span class="card-ui">
+                          <span class="cover cover-opini" aria-hidden="true">
+                            <svg
+                              class="pub-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#111827"
+                              stroke-width="2"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="meta">
+                            <span class="title">Opini</span>
+                            <span class="desc"
+                              >Tulisan opini/esai yang kurasi ringan.</span
+                            >
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <p
+                      id="typeError"
+                      class="mt-3 text-sm font-semibold text-red-600 hidden"
+                      role="alert"
+                    >
+                      Pilih minimal 1 tipe publikasi.
+                    </p>
+                  </fieldset>
+
+                  <!-- Frequency group -->
+                  <fieldset
+                    class="rounded-2xl p-4 border border-[#EEF0F7] bg-[#F8F9FC]"
+                  >
+                    <legend class="text-sm font-bold px-1 text-[#111827]">
+                      Frekuensi email
+                    </legend>
+
+                    <div class="mt-3 gap-3 sm:grid-cols-3 grid grid-cols-1">
+                      <label class="freq-card">
+                        <input
+                          type="radio"
+                          name="frequency"
+                          value="mingguan"
+                          checked
+                        />
+                        <span class="check-badge" aria-hidden="true">
+                          <svg
+                            class="mini-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#FF6B18"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M20 6L9 17l-5-5"
+                            />
+                          </svg>
+                        </span>
+                        <span class="card-ui items-start">
+                          <span class="icon" aria-hidden="true">
+                            <svg
+                              class="mini-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#111827"
+                              stroke-width="2"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M8 2v3M16 2v3"
+                              />
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3 9h18"
+                              />
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="meta">
+                            <span class="title">Mingguan</span>
+                            <span class="desc"
+                              >Ringkasan publikasi 1x/minggu.</span
+                            >
+                          </span>
+                        </span>
+                      </label>
+
+                      <label class="freq-card">
+                        <input type="radio" name="frequency" value="bulanan" />
+                        <span class="check-badge" aria-hidden="true">
+                          <svg
+                            class="mini-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#FF6B18"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M20 6L9 17l-5-5"
+                            />
+                          </svg>
+                        </span>
+                        <span class="card-ui items-start">
+                          <span class="icon" aria-hidden="true">
+                            <svg
+                              class="mini-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#111827"
+                              stroke-width="2"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 8v5l3 2"
+                              />
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"
+                              />
+                            </svg>
+                          </span>
+                          <span class="meta">
+                            <span class="title">Bulanan</span>
+                            <span class="desc"
+                              >Highlight pilihan 1x/bulan.</span
+                            >
+                          </span>
+                        </span>
+                      </label>
+
+                      <label class="freq-card">
+                        <input type="radio" name="frequency" value="penting" />
+                        <span class="check-badge" aria-hidden="true">
+                          <svg
+                            class="mini-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#FF6B18"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M20 6L9 17l-5-5"
+                            />
+                          </svg>
+                        </span>
+                        <span class="card-ui items-start">
+                          <span class="icon" aria-hidden="true">
+                            <svg
+                              class="mini-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#111827"
+                              stroke-width="2"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5"
+                              />
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9 17a3 3 0 0 0 6 0"
+                              />
+                            </svg>
+                          </span>
+                          <span class="meta">
+                            <span class="title">Penting saja</span>
+                            <span class="desc">Hanya pengumuman khusus.</span>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <p class="mt-3 text-xs sm:text-sm text-[#A3A6AE]">
+                      Saran: pilih “Mingguan” agar tidak ketinggalan rilis baru,
+                      tapi tetap tidak terasa spam.
+                    </p>
+                  </fieldset>
+
+                  <button
+                    type="submit"
+                    class="px-5 py-3 text-sm font-bold text-white inline-flex w-full items-center justify-center rounded-full bg-[#FF6B18] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880]"
+                  >
+                    Simpan preferensi
+                  </button>
+                </form>
               </div>
             </div>
 
-            <form
-              id="subscribeForm"
-              class="mt-6 space-y-6"
-              action="#"
-              method="post"
-            >
-              <!-- Checkbox group -->
-              <fieldset
-                class="rounded-2xl p-4 border border-[#EEF0F7] bg-[#F8F9FC]"
+            <!-- Right: ringkasan (1/3) -->
+            <aside class="lg:col-span-1">
+              <div
+                class="bg-white p-5 sm:p-6 shadow-sm rounded-[22px] ring-1 ring-[#EEF0F7]"
               >
-                <legend class="text-sm font-bold px-1 text-[#111827]">
-                  Tipe publikasi yang ingin diikuti
-                </legend>
+                <p class="text-xs font-bold tracking-wide text-[#A3A6AE]">
+                  Ringkasan
+                </p>
+                <h3 class="mt-2 text-lg font-extrabold text-[#111827]">
+                  Yang akan diterima
+                </h3>
 
-                <div class="mt-3 gap-3 sm:grid-cols-3 grid grid-cols-1">
-                  <!-- Buku -->
-                  <label class="pub-card">
-                    <input type="checkbox" name="types" value="buku" />
-                    <span class="check-badge" aria-hidden="true">
-                      <svg
-                        class="pub-icon"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#FF6B18"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M20 6L9 17l-5-5"
-                        />
-                      </svg>
-                    </span>
-
-                    <span class="card-ui">
-                      <span class="cover cover-buku" aria-hidden="true">
-                        <svg
-                          class="pub-icon"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#FF6B18"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5V4.5A2.5 2.5 0 0 1 6.5 2z"
-                          />
-                        </svg>
-                      </span>
-
-                      <span class="meta">
-                        <span class="title">Buku</span>
-                        <span class="desc"
-                          >Update buku/monograf terbaru dan rilis edisi.</span
-                        >
-                      </span>
-                    </span>
-                  </label>
-
-                  <!-- Jurnal -->
-                  <label class="pub-card">
-                    <input
-                      type="checkbox"
-                      name="types"
-                      value="jurnal"
-                      checked
-                    />
-                    <span class="check-badge" aria-hidden="true">
-                      <svg
-                        class="pub-icon"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#FF6B18"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M20 6L9 17l-5-5"
-                        />
-                      </svg>
-                    </span>
-
-                    <span class="card-ui">
-                      <span class="cover cover-jurnal" aria-hidden="true">
-                        <svg
-                          class="pub-icon"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#111827"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M14 2v6h6"
-                          />
-                        </svg>
-                      </span>
-
-                      <span class="meta">
-                        <span class="title">Jurnal</span>
-                        <span class="desc"
-                          >Rilis artikel/jurnal terbaru dari tim
-                          editorial.</span
-                        >
-                      </span>
-                    </span>
-                  </label>
-
-                  <!-- Opini -->
-                  <label class="pub-card">
-                    <input type="checkbox" name="types" value="opini" />
-                    <span class="check-badge" aria-hidden="true">
-                      <svg
-                        class="pub-icon"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#FF6B18"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M20 6L9 17l-5-5"
-                        />
-                      </svg>
-                    </span>
-
-                    <span class="card-ui">
-                      <span class="cover cover-opini" aria-hidden="true">
-                        <svg
-                          class="pub-icon"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#111827"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"
-                          />
-                        </svg>
-                      </span>
-
-                      <span class="meta">
-                        <span class="title">Opini</span>
-                        <span class="desc"
-                          >Tulisan opini/esai yang kurasi ringan.</span
-                        >
-                      </span>
-                    </span>
-                  </label>
+                <div class="mt-4 space-y-3 text-sm">
+                  <div
+                    class="rounded-2xl p-4 border border-[#EEF0F7] bg-[#F8F9FC]"
+                  >
+                    <p class="font-bold text-[#111827]">Tipe</p>
+                    <p id="summaryTypes" class="mt-1 text-[#6B7280]">Jurnal</p>
+                  </div>
+                  <div
+                    class="rounded-2xl p-4 border border-[#EEF0F7] bg-[#F8F9FC]"
+                  >
+                    <p class="font-bold text-[#111827]">Frekuensi</p>
+                    <p id="summaryFreq" class="mt-1 text-[#6B7280]">Mingguan</p>
+                  </div>
+                  <div
+                    class="rounded-2xl p-4 border border-[#EEF0F7] bg-[#FFF7F2]"
+                  >
+                    <p class="font-bold text-[#111827]">Email tujuan</p>
+                    <p id="summaryEmail" class="mt-1 font-bold text-[#FF6B18]">
+                      -
+                    </p>
+                  </div>
                 </div>
 
-                <p
-                  id="typeError"
-                  class="mt-3 text-sm font-semibold text-red-600 hidden"
-                >
-                  Pilih minimal 1 tipe publikasi.
+                <p class="mt-4 text-xs leading-[18px] text-[#A3A6AE]">
+                  Ini halaman demo: penyimpanan preferensi pakai localStorage
+                  untuk simulasi.
                 </p>
-              </fieldset>
-
-              <!-- Frequency group -->
-              <fieldset
-                class="rounded-2xl p-4 border border-[#EEF0F7] bg-[#F8F9FC]"
-              >
-                <legend class="text-sm font-bold px-1 text-[#111827]">
-                  Frekuensi email
-                </legend>
-
-                <div class="mt-3 gap-3 sm:grid-cols-3 grid grid-cols-1">
-                  <label class="freq-card">
-                    <input
-                      type="radio"
-                      name="frequency"
-                      value="mingguan"
-                      checked
-                    />
-                    <span class="check-badge" aria-hidden="true">
-                      <svg
-                        class="mini-icon"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#FF6B18"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M20 6L9 17l-5-5"
-                        />
-                      </svg>
-                    </span>
-
-                    <span class="card-ui">
-                      <span class="icon" aria-hidden="true">
-                        <svg
-                          class="mini-icon"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#111827"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8 2v3M16 2v3"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3 9h18"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
-                          />
-                        </svg>
-                      </span>
-
-                      <span class="meta">
-                        <span class="title">Mingguan</span>
-                        <span class="desc">Ringkasan publikasi 1x/minggu.</span>
-                      </span>
-                    </span>
-                  </label>
-
-                  <label class="freq-card">
-                    <input type="radio" name="frequency" value="bulanan" />
-                    <span class="check-badge" aria-hidden="true">
-                      <svg
-                        class="mini-icon"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#FF6B18"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M20 6L9 17l-5-5"
-                        />
-                      </svg>
-                    </span>
-
-                    <span class="card-ui">
-                      <span class="icon" aria-hidden="true">
-                        <svg
-                          class="mini-icon"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#111827"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 8v5l3 2"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"
-                          />
-                        </svg>
-                      </span>
-
-                      <span class="meta">
-                        <span class="title">Bulanan</span>
-                        <span class="desc">Highlight pilihan 1x/bulan.</span>
-                      </span>
-                    </span>
-                  </label>
-
-                  <label class="freq-card">
-                    <input type="radio" name="frequency" value="penting" />
-                    <span class="check-badge" aria-hidden="true">
-                      <svg
-                        class="mini-icon"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#FF6B18"
-                        stroke-width="2"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M20 6L9 17l-5-5"
-                        />
-                      </svg>
-                    </span>
-
-                    <span class="card-ui">
-                      <span class="icon" aria-hidden="true">
-                        <svg
-                          class="mini-icon"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#111827"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5"
-                          />
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 17a3 3 0 0 0 6 0"
-                          />
-                        </svg>
-                      </span>
-
-                      <span class="meta">
-                        <span class="title">Penting saja</span>
-                        <span class="desc">Hanya pengumuman khusus.</span>
-                      </span>
-                    </span>
-                  </label>
-                </div>
-
-                <p class="mt-3 text-xs sm:text-sm text-[#A3A6AE]">
-                  Saran: pilih “Mingguan” agar tidak ketinggalan rilis baru,
-                  tapi tetap tidak spam.
-                </p>
-              </fieldset>
-
-              <button
-                type="submit"
-                class="px-5 py-3 text-sm font-bold text-white focus-visible:ring-offset-white inline-flex w-full items-center justify-center rounded-full bg-[#FF6B18] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF6B1880] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B18] focus-visible:ring-offset-2"
-              >
-                Simpan preferensi
-              </button>
-            </form>
+              </div>
+            </aside>
           </div>
         </section>
       </main>
@@ -890,14 +1010,12 @@
 
     <script>
       (function () {
-        // Web Storage API: setItem/getItem digunakan untuk demo login & preferensi. [web:117][web:115]
         const AUTH_KEY = "bhaya_auth_demo";
         const PREF_KEY = "bhaya_subscription_pref_demo";
 
         function getAuth() {
           try {
-            const raw = localStorage.getItem(AUTH_KEY);
-            return raw ? JSON.parse(raw) : null;
+            return JSON.parse(localStorage.getItem(AUTH_KEY) || "null");
           } catch {
             return null;
           }
@@ -913,8 +1031,7 @@
         }
         function loadPref() {
           try {
-            const raw = localStorage.getItem(PREF_KEY);
-            return raw ? JSON.parse(raw) : null;
+            return JSON.parse(localStorage.getItem(PREF_KEY) || "null");
           } catch {
             return null;
           }
@@ -937,24 +1054,56 @@
           document.body.classList.toggle("overflow-hidden", open);
         }
 
-        btn?.addEventListener("click", () => {
-          const open = panel?.classList.contains("hidden");
-          setMobileOpen(!!open);
-        });
+        btn?.addEventListener("click", () =>
+          setMobileOpen(panel?.classList.contains("hidden")),
+        );
         overlay?.addEventListener("click", () => setMobileOpen(false));
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") setMobileOpen(false);
         });
         panel?.addEventListener("click", (e) => {
-          const link = e.target.closest("a");
-          if (!link) return;
-          setMobileOpen(false);
+          if (e.target.closest("a")) setMobileOpen(false);
         });
 
         // Auth UI
         const mustLoginPanel = document.getElementById("mustLoginPanel");
         const subPanel = document.getElementById("subPanel");
         const userEmailText = document.getElementById("userEmailText");
+
+        // Summary UI
+        const summaryTypes = document.getElementById("summaryTypes");
+        const summaryFreq = document.getElementById("summaryFreq");
+        const summaryEmail = document.getElementById("summaryEmail");
+
+        function friendlyType(v) {
+          if (v === "buku") return "Buku";
+          if (v === "jurnal") return "Jurnal";
+          if (v === "opini") return "Opini";
+          return v;
+        }
+        function friendlyFreq(v) {
+          if (v === "mingguan") return "Mingguan";
+          if (v === "bulanan") return "Bulanan";
+          if (v === "penting") return "Penting saja";
+          return v;
+        }
+
+        function updateSummaryFromUI() {
+          const selectedTypes = Array.from(
+            document.querySelectorAll('input[name="types"]:checked'),
+          ).map((x) => x.value);
+          const freq =
+            document.querySelector('input[name="frequency"]:checked')?.value ||
+            "mingguan";
+          const auth = getAuth();
+
+          if (summaryTypes)
+            summaryTypes.textContent = selectedTypes.length
+              ? selectedTypes.map(friendlyType).join(", ")
+              : "-";
+          if (summaryFreq) summaryFreq.textContent = friendlyFreq(freq);
+          if (summaryEmail) summaryEmail.textContent = auth?.email || "-";
+        }
 
         function renderAuthState() {
           const auth = getAuth();
@@ -964,6 +1113,7 @@
           subPanel?.classList.toggle("hidden", !loggedIn);
 
           if (loggedIn && userEmailText) userEmailText.textContent = auth.email;
+          updateSummaryFromUI();
         }
 
         document
@@ -989,12 +1139,21 @@
               : false;
           });
 
-          const freq = pref.frequency;
           const freqInput = document.querySelector(
-            `input[name="frequency"][value="${freq}"]`,
+            `input[name="frequency"][value="${pref.frequency}"]`,
           );
           if (freqInput) freqInput.checked = true;
         }
+
+        // Live update summary
+        document.addEventListener("change", (e) => {
+          if (
+            e.target?.matches('input[name="types"]') ||
+            e.target?.matches('input[name="frequency"]')
+          ) {
+            updateSummaryFromUI();
+          }
+        });
 
         // Submit
         const form = document.getElementById("subscribeForm");
@@ -1007,19 +1166,22 @@
           const selectedTypes = Array.from(
             document.querySelectorAll('input[name="types"]:checked'),
           ).map((x) => x.value);
+
+          // Error dekat field + instruktif (memudahkan perbaikan)
           if (selectedTypes.length === 0) {
             typeError?.classList.remove("hidden");
             ok?.classList.add("hidden");
+            typeError?.scrollIntoView({ behavior: "smooth", block: "nearest" });
             return;
           }
+
           typeError?.classList.add("hidden");
 
           const freq =
             document.querySelector('input[name="frequency"]:checked')?.value ||
             "mingguan";
-
           const auth = getAuth();
-          if (!auth || !auth.email) {
+          if (!auth?.email) {
             location.reload();
             return;
           }
@@ -1030,15 +1192,17 @@
             frequency: freq,
             updatedAt: new Date().toISOString(),
           };
-
           savePref(payload);
+
           ok?.classList.remove("hidden");
           ok?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          updateSummaryFromUI();
         });
 
         // Init
         renderAuthState();
         applySavedPref();
+        updateSummaryFromUI();
       })();
     </script>
   </body>
